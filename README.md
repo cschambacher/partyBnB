@@ -42,8 +42,6 @@ Additionally, bundling of client-side javascript is accomplished by Webpack, and
 
 Backend: Node, Express, MongoDB
 
-PartyBnB back-end HTTP API is expected to be relatively small since it's role is limited to retrieving user records and establishing a websocket connection to rapidly synchronize data between users.
-
 Frontend: React and React Native with Redux
 
 ### 2.Technical challenges:
