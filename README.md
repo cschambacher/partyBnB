@@ -46,5 +46,11 @@ PartyBnB back-end HTTP API is expected to be relatively small since it's role is
 
 Frontend: React and React Native with Redux
 
+### 2.Technical challenges:
+* Reading data from MongoDB database and organizing for display
+* Implement search (by location & availability) & Google Maps on search
+
+Reading data from MongoDB database and organizing for display
+
 ## 5.Group Members & Work Breakdown
 Paul Kim, Corina Schambacher and Nick Saulsberry
