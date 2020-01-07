@@ -19,8 +19,8 @@ class NavBar extends React.Component {
     getLinks() {
         if (this.props.loggedIn) {
             return (
-                <div className="nav-logged">
-                    <ul className="nav-logged-list"> 
+                <div className="nav-right">
+                    <ul className="nav-right-list"> 
                         <li><Link to={'/create_listing'}>Add Listing</Link></li>
                         <li><Link to={'/profile'}>Profile</Link></li>
                         <li><Link to={'/new_tweet'}>Create a Spot</Link></li>
@@ -30,8 +30,8 @@ class NavBar extends React.Component {
             );
         } else {
             return (
-                <div className="nav-notlogged">
-                    <ul className="nav-logged-list">
+                <div className="nav-right">
+                    <ul className="nav-right-list">
                     <li><Link to={'/signup'}>Signup</Link></li>
                     <li><Link to={'/login'}>Login</Link></li>
                     </ul>
@@ -43,9 +43,14 @@ class NavBar extends React.Component {
     render() {
         return (
             <div className="nav-bar">
-                <div>
-                    <img src={logoname} className="nav-logo" alt="logo" />
-                </div>
+                <img src={logoname} className="nav-logo" alt="logo" />
+                <div className="nav-search">
+                    <input
+                        type="text"
+                        value=""
+                        placeholder="Search party spots"
+                        className="search-input"
+                    /></div>
                 {this.getLinks()}
             </div>
         );
