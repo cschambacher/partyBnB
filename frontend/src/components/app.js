@@ -13,16 +13,16 @@ import CurrentSpot from './spot/current_spot';
 
 const App = () => (
   <div>
-    <NavBarContainer />
-    <Switch>
-      <AuthRoute exact path="/" component={MainPage} />
-      <AuthRoute exact path="/login" component={LoginFormContainer} />
-      <AuthRoute exact path="/signup" component={SignupFormContainer} />
-      <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
+        <NavBarContainer/>
+        <Switch>
+            <AuthRoute exact path="/login" component={LoginFormContainer} />
+            <AuthRoute exact path="/signup" component={SignupFormContainer} />
+            <AuthRoute exact path="/" component={MainPage} />
+            <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
       <ProtectedRoute exact path="/create_listing" component={HowToStart} />
       <ProtectedRoute exact path="/newListing" component={CurrentSpot} />
-    </Switch>
-  </div>
+        </Switch>
+    </div>
 );
 
 export default App;

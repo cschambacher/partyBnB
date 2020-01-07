@@ -1,15 +1,18 @@
 import React from 'react';
-
+import bg from './people.jpg';
 class MainPage extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="main">
+                <div id="bg">
+                    <img src={bg} id="bg" alt=""></img>
+                </div>
                 
-                <h1>partyBnB</h1>
                 <footer>
+                    <span>partyBnB</span>
                     Copyright &copy; 2020 PNC
-        </footer>
+                </footer>
             </div>
         );
     }
