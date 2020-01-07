@@ -1,5 +1,6 @@
 import React from 'react';
 import { withRouter } from 'react-router-dom';
+import './session_forms.scss';
 
 class SignupForm extends React.Component {
     constructor(props) {
@@ -58,9 +59,10 @@ class SignupForm extends React.Component {
 
     render() {
         return (
-            <div className="signup-form-container">
-                <form onSubmit={this.handleSubmit}>
-                    <div className="signup-form">
+            <div className="form-container">
+                <form className="form" onSubmit={this.handleSubmit}>
+
+                    <div className="inner-form">
                         <br />
                         <input type="text"
                             value={this.state.email}
@@ -92,7 +94,7 @@ class SignupForm extends React.Component {
                             placeholder="Confirm Password"
                         />
                         <br />
-                        <input type="submit" value="Submit" />
+                        <input type="submit" value="Submit" className="form-btn"/>
                         {this.renderErrors()}
                     </div>
                 </form>
