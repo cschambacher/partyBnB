@@ -1,5 +1,12 @@
 import axios from 'axios'
 
 export const getCurrentSpot = (placetype) => {
-    return axios.patch(`/api/spots/${placetype.id}`)
+    return axios({
+        method: 'patch',
+        url: `/api/spots/${placetype.id}`,
+        data: {
+
+        }
+    });
 }
+
