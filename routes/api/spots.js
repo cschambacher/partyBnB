@@ -21,6 +21,7 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", passport.authenticate("jwt", { session: false }), (req, res) => {
+  console.log("PostBody", req.body);
     //const { errors, isValid } = validateSpotInput(req.body);
 
 //    if (!isValid) {
@@ -43,17 +44,13 @@ router.post("/", passport.authenticate("jwt", { session: false }), (req, res) =>
 );
 
 router.patch("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
-  const updateKey = Object.keys(req.body)[0];
-  console.log("updateKey1", updateKey);
-  console.log("Value", req.body[updateKey]);
-
-        Spot.findByIdAndUpdate(req.params.id, {$set: {updateKey: req.body[updateKey]}}, {new: true}, (err, newSpot) => {
+  Spot.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, newSpot) => {
             if (err) {
                 console.log(err);
                 return res
                   .status(404)
-                  .json({ error: "There was an error with the update" });
-            } else return newSpot;
+                  .json({ error: "There was an error with the update", err });
+          } else return res.json(newSpot);
         });
     }
 );
