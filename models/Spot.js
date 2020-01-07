@@ -1,6 +1,53 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+const pointSchema = new Schema({
+  type: {
+    type: String,
+    enum: ["Point"],
+    required: true
+  },
+  coordinates: {
+    type: [Number],
+    required: true
+  }
+});
+
+const citySchema = new Schema({
+  name: String,
+  location: {
+    type: pointSchema,
+    required: true
+  }
+});
+
+const houseRulesSchema = new Schema({
+  childFriendly: Boolean,
+  babyFriendly: Boolean,
+  petFriendly: Boolean,
+  smokingAllowed: Boolean,
+  additionalRules: [String],
+  detailsGuestsMustKnow: String
+});
+
+const placeTypeSchema = new Schema({
+  placeType: String,
+  propertyType: String,
+  whatWillGuestsHave: String,
+  dedicatedGuestSpace: Boolean,
+  listingForOtherCompany: Boolean
+});
+
+const locationSchema = new Schema({
+  streetAddress: String,
+  suite: String,
+  country: String,
+  city: String,
+  state: String,
+  zip: String,
+  point: pointSchema
+});
+
 const SpotSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
@@ -53,51 +100,6 @@ const SpotSchema = new Schema({
   }
 });
 
-const pointSchema = new Schema({
-  type: {
-    type: String,
-    enum: ["Point"],
-    required: true
-  },
-  coordinates: {
-    type: [Number],
-    required: true
-  }
-});
 
-const placeTypeSchema = new Schema({
-    placeType: String,
-    propertyType: String,
-    whatWillGuestsHave: String,
-    dedicatedGuestSpace: Boolean,
-    listingForOtherCompany: Boolean
-});
-
-const locationSchema = new Schema({
-  streetAddress: String,
-  suite: String,
-  country: String,
-  city: String,
-  state: String,
-  zip: String,
-  point: pointSchema
-});
-
-const houseRulesSchema = new Schema({
-    childFriendly: Boolean,
-    babyFriendly: Boolean,
-    petFriendly: Boolean,
-    smokingAllowed: Boolean,
-    additionalRules: [String],
-    detailsGuestsMustKnow: String
-})
-
-const citySchema = new Schema({
-  name: String,
-  location: {
-    type: pointSchema,
-    required: true
-  }
-});
 
 module.exports = Spot = mongoose.model('Spot', SpotSchema);
