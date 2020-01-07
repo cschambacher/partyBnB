@@ -9,21 +9,18 @@ router.get("/", (req, res) => {
   Spot.find({published: true})
     .sort({ created_at: -1 })
     .then(spots => res.json(spots))
-    .catch(err => res.status(404).json({ notweetsfound: "No spots found" }));
+    .catch(err => res.status(404).json({ nospotsfound: "No spots found" }));
 });
 
 router.get("/:id", (req, res) => {
   Spot.findById(req.params.id)
     .then(spot => res.json(spot))
     .catch(err =>
-      res.status(404).json({ notweetfound: "No spot found with that ID" })
+      res.status(404).json({ nospotsfound: "No spot found with that ID" })
     );
 });
 
-router.post(
-  "/",
-  passport.authenticate("jwt", { session: false }),
-  (req, res) => {
+router.post("/", passport.authenticate("jwt", { session: false }), (req, res) => {
     //const { errors, isValid } = validateSpotInput(req.body);
 
 //    if (!isValid) {
@@ -31,17 +28,26 @@ router.post(
 //    }
 
     const newSpot = new Spot({
-      placeType: req.body.placeType,
-      user: req.user.id  //req.user is accessed through passport
+      placeType: {
+        placeType: req.body.placeType
+      },
+      user: req.user.id //req.user is accessed through passport
     });
 
-    newSpot.save().then(spot => res.json(spot));
+    //console.log(req.body.placeType);
+
+    newSpot.markModified('placeType');
+
+    newSpot.save().then(spot => res.json(spot)).catch(error => console.log(error));
   }
 );
 
-router.patch(
-    "/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
-        Spot.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, newSpot) => {
+router.patch("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
+  const updateKey = Object.keys(req.body)[0];
+  console.log("updateKey1", updateKey);
+  console.log("Value", req.body[updateKey]);
+
+        Spot.findByIdAndUpdate(req.params.id, {$set: {updateKey: req.body[updateKey]}}, {new: true}, (err, newSpot) => {
             if (err) {
                 console.log(err);
                 return res
@@ -51,4 +57,6 @@ router.patch(
         });
     }
 );
+
+module.exports = router;
 
