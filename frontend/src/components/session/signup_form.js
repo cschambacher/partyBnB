@@ -60,9 +60,9 @@ class SignupForm extends React.Component {
     render() {
         return (
             <div className="form-container">
-                <form className="form" onSubmit={this.handleSubmit}>
+                <form  onSubmit={this.handleSubmit}>
 
-                    <div className="inner-form">
+                    <div className="form">
                         <br />
                         <input type="text"
                             value={this.state.email}
@@ -94,7 +94,7 @@ class SignupForm extends React.Component {
                             placeholder="Confirm Password"
                         />
                         <br />
-                        <input type="submit" value="Submit" className="form-btn"/>
+                        <input type="submit" value="Sign up" className="form-btn"/>
                         {this.renderErrors()}
                     </div>
                 </form>
