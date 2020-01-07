@@ -19,18 +19,22 @@ class NavBar extends React.Component {
     getLinks() {
         if (this.props.loggedIn) {
             return (
-                <div>
-                    <Link to={'/create_listing'}>Add Listing</Link>
-                    <Link to={'/profile'}>Profile</Link>
-                    <Link to={'/new_tweet'}>Create a Spot</Link>
-                    <button onClick={this.logoutUser}>Logout</button>
+                <div className="nav-logged">
+                    <ul className="nav-logged-list"> 
+                        <li><Link to={'/create_listing'}>Add Listing</Link></li>
+                        <li><Link to={'/profile'}>Profile</Link></li>
+                        <li><Link to={'/new_tweet'}>Create a Spot</Link></li>
+                        <li><button onClick={this.logoutUser}>Logout</button></li>
+                    </ul>
                 </div>
             );
         } else {
             return (
-                <div>
-                    <Link to={'/signup'}>Signup</Link>
-                    <Link to={'/login'}>Login</Link>
+                <div className="nav-notlogged">
+                    <ul className="nav-logged-list">
+                    <li><Link to={'/signup'}>Signup</Link></li>
+                    <li><Link to={'/login'}>Login</Link></li>
+                    </ul>
                 </div>
             );
         }
@@ -38,10 +42,10 @@ class NavBar extends React.Component {
 
     render() {
         return (
-            <div>
-                <h1>
+            <div className="nav-bar">
+                <div>
                     <img src={logoname} className="nav-logo" alt="logo" />
-                </h1>
+                </div>
                 {this.getLinks()}
             </div>
         );

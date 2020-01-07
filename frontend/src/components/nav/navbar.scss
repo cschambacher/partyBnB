@@ -1,0 +1,23 @@
+.nav-bar{
+    height: 64px;
+    position: sticky;
+    display: flex;
+     justify-content: space-between;
+     border-bottom: 1px solid grey;
+}
+.nav-logo{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 50px;
+    height: 50px;
+}
+
+.nav-logged,
+.nav-notlogged{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid grey;
+}
