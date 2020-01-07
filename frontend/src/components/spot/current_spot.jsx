@@ -6,7 +6,7 @@ import DedicatedGuestSpace from './dedicated_guest_space'
 import Lisiting from './listing'
 
 
-class CurrentSpot extends React.Component {
+export default class CurrentSpot extends React.Component {
     constructor(props) {
         super(props)
     }
