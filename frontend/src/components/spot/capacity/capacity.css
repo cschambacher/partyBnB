@@ -1,0 +1,90 @@
+.capacity {
+    width: 100%;
+    background-color: rgb(250,250,250);
+}
+
+.white-background {
+    padding-top: 5%;
+    background-color: white;
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+}
+
+.form-header {
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: bold;
+    font-size: 1.5em;
+}
+
+.form-description {
+    font-family: 'Lato', sans-serif;
+    margin-top: 2em;
+}
+
+.space-between {
+    display: flex;
+    margin-top: 2em;
+    align-items: center;
+    width: 35%;
+    justify-content: space-between;
+    margin-bottom: 5em;
+}
+
+.capacity-label {
+    font-weight: bold;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.form-decrement {
+    font-size: 1.5em;
+    color: rgb(54,133,137);
+    border: 1px solid rgb(54,133,137);
+    border-radius: 50%;
+    padding: 1px 10px 4px 10px;
+    transition: padding 3s;
+}
+
+.form-decrement:active, .form-increment:active {
+    padding: 2px 14px 5px 14px;
+    font-size: 1.6em;
+}
+
+.form-increment {
+    font-size: 1.5em;
+    color: rgb(54,133,137);
+    border: 1px solid rgb(54,133,137);
+    border-radius: 50%;
+    padding: 1px 10px 4px 10px;
+    transition: padding 3s;
+}
+
+.dull {
+    color: rgb(185,217,219);
+    border: 1px solid rgb(185,217,219);
+}
+
+.next-back {
+    position: fixed;
+    bottom: 0;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    display: flex;
+    justify-content: space-between;
+    width: 50%;
+    padding: 10px 5px;
+}
+
+.next-btn{
+  display: block;
+  border: none;
+  color: white;
+  background-color: rgb(54,133,137);
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+  border-radius: 1px;
+}
+

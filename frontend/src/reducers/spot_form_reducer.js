@@ -11,7 +11,8 @@ const SpotFormReducer = (state = {}, action) => {
             return Object.assign({}, state, action.currentSpot);
         case RECEIVE_PLACE_TYPE:
             return Object.assign({}, state, {placeType: action.placeType})
-        default: state
+        default: 
+        return state;
     }
 }
 

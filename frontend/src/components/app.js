@@ -10,6 +10,7 @@ import DashboardContainer from './dashboard/dasboard_container';
 import HowToStart from './spot/how_to_start/how_to_start';
 import './reset.scss';
 import CurrentSpot from './spot/current_spot';
+import Capacity from './spot/capacity/capacity';
 
 const App = () => (
   <div>
@@ -21,6 +22,7 @@ const App = () => (
             <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
       <ProtectedRoute exact path="/create_listing" component={HowToStart} />
       <ProtectedRoute exact path="/newListing" component={CurrentSpot} />
+      <ProtectedRoute exact path="/capacity" component={Capacity} />
         </Switch>
     </div>
 );
