@@ -1,4 +1,4 @@
-import {updateSpot, createCurrentSpot} from '../util/place_type_utils'
+import { updateCurrentSpot, createCurrentSpot} from '../util/spot_form_utils';
 
 export const RECEIVE_CURRENT_SPOT = 'RECEIVE_CURRENT_SPOT';
 export const RECEIVE_PLACE_TYPE = "RECEIVE_PLACE_TYPE";
@@ -17,4 +17,4 @@ export const createSpot = (spot) => (dispatch) => {
 }
 
 export const updateSpot = (spotId, updatePayload) => dispatch =>
-         updateSpot(spotId, updatePayload).then(spot => dispatch(receiveCurrentSpot(spot)));
+  updateCurrentSpot(spotId, updatePayload).then(spot => dispatch(receiveCurrentSpot(spot)));

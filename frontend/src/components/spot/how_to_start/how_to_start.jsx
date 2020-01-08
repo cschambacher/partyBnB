@@ -10,7 +10,7 @@ export default class HowToStart extends React.Component {
     }
     handleClick = e => {
         e.preventDefault();
-        this.props.history.push('/newListing')
+      this.props.history.push('/capacity');
     }
     render() {
         return (
