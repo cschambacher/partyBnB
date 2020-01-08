@@ -29,9 +29,7 @@ router.post("/", passport.authenticate("jwt", { session: false }), (req, res) =>
 //    }
 
     const newSpot = new Spot({
-      placeType: {
-        placeType: req.body.placeType
-      },
+      placeType: req.body,
       user: req.user.id //req.user is accessed through passport
     });
 
