@@ -1,7 +1,10 @@
 import React from 'react';
 import './how_to_start.css';
 import balloons from './ballons.png';
-export default class HowToStart extends React.Component {
+import { createCurrentSpot } from '../../../util/spot_form_utils';
+import { connect } from 'react-redux';
+import { receiveCurrentSpot } from '../../../actions/spot_actions';
+class HowToStart extends React.Component {
     constructor(props){
         super(props);
         this.state =  {
@@ -10,7 +13,11 @@ export default class HowToStart extends React.Component {
     }
     handleClick = e => {
         e.preventDefault();
-      this.props.history.push('/capacity');
+        createCurrentSpot().then(spot => {
+          console.log(spot);
+          this.props.receiveCurrentSpot(spot.data);
+          this.props.history.push(`/location/${spot.data._id}`);
+        }).catch(err => console.log(err));
     }
     render() {
         return (
@@ -41,3 +48,9 @@ export default class HowToStart extends React.Component {
         );
     }
 }
+
+const mapDispatchToProps = dispatch => ({
+  receiveCurrentSpot: spot => dispatch(receiveCurrentSpot)
+});
+
+export default connect(null, mapDispatchToProps)(HowToStart);

@@ -1,14 +1,18 @@
 import React from 'react';
 import './capacity.css';
 import { connect } from 'react-redux';
-import { updateSpot } from '../../../actions/spot_actions';
+import { updateSpot, fetchSpot } from '../../../actions/spot_actions';
 class Capacity extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            maxGuestSize: 25,
-            rooms: 3
+            maxGuestSize: this.props.spot.capacity.maxGuestSize ? this.props.spot.capacity.maxGuestSize : 25,
+            rooms: this.props.spot.capacity.rooms ? this.props.spot.capacity.rooms : 3
         }
+    }
+
+    componentDidMount(){
+        this.props.fetchSpot(this.props.match.params.spotId)
     }
     
     increase = arg => {
@@ -52,7 +56,7 @@ class Capacity extends React.Component {
                         <p>Back</p>
                         <button className="next-btn"
                         onClick={() => {
-                            this.props.updateSpot("5e157f0f29f29448e8c6ccbc", {
+                            this.props.updateSpot(this.props.match.params.spotId, {
                                 capacity: this.state
                             });
                             console.log("pressed");
@@ -64,8 +68,13 @@ class Capacity extends React.Component {
     }
 }
 
+const mapStateToProps = state => ({
+    spot: state.entities.spotForm
+})
+
 const mapDispatchToProps = dispatch => ({
-    updateSpot: (spotId, updatePayload) => dispatch(updateSpot(spotId, updatePayload))
+    updateSpot: (spotId, updatePayload) => dispatch(updateSpot(spotId, updatePayload)),
+    fetchSpot: (spotId) => dispatch(fetchSpot(spotId))
 });
 
-export default connect(null, mapDispatchToProps)(Capacity);
+export default connect(mapStateToProps, mapDispatchToProps)(Capacity);

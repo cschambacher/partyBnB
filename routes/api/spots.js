@@ -21,15 +21,13 @@ router.get("/:id", (req, res) => {
 });
 
 router.post("/", passport.authenticate("jwt", { session: false }), (req, res) => {
-  console.log("PostBody", req.body);
     //const { errors, isValid } = validateSpotInput(req.body);
 
 //    if (!isValid) {
 //      return res.status(400).json(errors);
 //    }
 
-    const newSpot = new Spot({
-      placeType: req.body,
+    const newSpot = req.body ? new Spot(req.body) : new Spot({
       user: req.user.id //req.user is accessed through passport
     });
 

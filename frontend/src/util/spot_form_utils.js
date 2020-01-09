@@ -9,6 +9,10 @@ export const updateCurrentSpot = (spotId, payload) => {
 }
 
 export const createCurrentSpot = spot => {
-    return axios.post('api/spots', spot)
+    if (spot){
+      return axios.post("api/spots", spot);
+    } else {
+        return axios.post("api/spots");
+    }
 }
 
