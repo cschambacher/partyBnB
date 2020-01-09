@@ -8,19 +8,12 @@ export default class Dashboard extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            spots: {}
+            spots: []
         }
     }
     render() {
         return (
-          <div>
-            {this.state.spots.map(spot => (
-              <Thumbnail 
-              title={spot.title}
-              price={spot.price.baseprice}
-              />
-            ))}
-          </div>
+            <div></div>
         );
     }
 }
