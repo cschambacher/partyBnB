@@ -2,12 +2,15 @@
     width: 388px;
     height: 339px;
     font-size: 16px;
+    margin: 2%;
 }
 
 .thumbnail-image{
     width: 388px;
     height: 258px;
     box-sizing: border-box;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 10px 10px 5px 5px;
 }
 
 .name {
