@@ -12,10 +12,10 @@ class Thumbnail extends React.Component {
     render(){
         return (
           <div className="thumbnail">
-            <img className="thumbnail-image" src={pic} />
+            <img className="thumbnail-image" src={this.props.imageUrl} />
 
             <div className="name">
-              {this.props.title} name of place
+              {this.props.title}
               <div className="rating">
                 {/* {this.props.rating} */}
                 <FontAwesomeIcon className="star-icon" icon={faStar} />
@@ -23,9 +23,9 @@ class Thumbnail extends React.Component {
               </div>
             </div>
 
-            <div className="description">{this.props.title} Description</div>
+            <div className="description">{this.props.description} Description</div>
 
-            <div className="price">{this.props.price}$Price
+            <div className="price">${this.props.price}
                 <div className="per-night"> / night</div>
             </div>
           </div>
