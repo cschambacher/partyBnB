@@ -1,6 +1,7 @@
 import React from 'react';
-import './thumbnail.scss'
-import pic from './pic.jpg'
+import './thumbnail.scss';
+import pic from './pic.jpg';
+import { Link, withRouter } from 'react-router-dom';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from '@fortawesome/free-solid-svg-icons'
 
@@ -33,6 +34,6 @@ class Thumbnail extends React.Component {
     }
 }
 
-export default Thumbnail
+export default withRouter(Thumbnail)
 
 
