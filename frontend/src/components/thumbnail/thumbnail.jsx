@@ -15,17 +15,17 @@ class Thumbnail extends React.Component {
             <img className="thumbnail-image" src={pic} />
 
             <div className="name">
-              {this.props.name} name of place
+              {this.props.title} name of place
               <div className="rating">
-                {this.props.rating}
+                {/* {this.props.rating} */}
                 <FontAwesomeIcon className="star-icon" icon={faStar} />
                 4.5
               </div>
             </div>
 
-            <div className="description">{this.props.name} Description</div>
+            <div className="description">{this.props.title} Description</div>
 
-            <div className="price">{this.props.name}$Price
+            <div className="price">{this.props.price}$Price
                 <div className="per-night"> / night</div>
             </div>
           </div>
