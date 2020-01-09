@@ -1,8 +1,10 @@
 import React from 'react';
 import Thumbnail from '../thumbnail/thumbnail'
 import { fetchSpots } from '../../util/spot_util';
+import { Link, withRouter } from 'react-router-dom';
 import './dashboard.scss';
-export default class Dashboard extends React.Component {
+
+class Dashboard extends React.Component {
     constructor(props){
         super(props);
         this.state = {
@@ -28,7 +30,7 @@ export default class Dashboard extends React.Component {
                       price={spot.price.basePrice.toString()}
                       key={spot.id}
                       imageUrl={spot.imageUrl}
-                      id={spot.id}
+                      id={spot._id}
                       />
                   ))  
                 }
@@ -38,3 +40,4 @@ export default class Dashboard extends React.Component {
         
     }
 }
+export default withRouter(Dashboard);

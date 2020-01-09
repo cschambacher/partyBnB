@@ -23,7 +23,7 @@ class NavBar extends React.Component {
                     <ul className="nav-right-list"> 
                         <li><Link to={'/create_listing'}>Add Listing</Link></li>
                         <li><Link to={'/profile'}>Profile</Link></li>
-                        <li><Link to={'/new_tweet'}>Create a Spot</Link></li>
+                        {/* <li><Link to={'/new_tweet'}>Create a Spot</Link></li> */}
                         <li><button onClick={this.logoutUser}>Logout</button></li>
                     </ul>
                 </div>
@@ -32,6 +32,7 @@ class NavBar extends React.Component {
             return (
                 <div className="nav-right">
                     <ul className="nav-right-list">
+                    <li><Link to={'/'}>Help</Link></li>
                     <li><Link to={'/signup'}>Signup</Link></li>
                     <li><Link to={'/login'}>Login</Link></li>
                     </ul>
