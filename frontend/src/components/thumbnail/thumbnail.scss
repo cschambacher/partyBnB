@@ -1,0 +1,40 @@
+.thumbnail{
+    width: 388px;
+    height: 339px;
+    font-size: 16px;
+}
+
+.thumbnail-image{
+    width: 388px;
+    height: 258px;
+    box-sizing: border-box;
+}
+
+.name {
+    display: flex;
+    width: 412px;
+}
+
+.rating {
+    margin-left: 247px;
+    display: flex;
+    height: 17px;
+    font-size: 14px;
+}
+
+.star-icon{
+    color: red;
+    height: 0.75em;
+    padding: 3px;
+
+}
+
+.price{
+    display: flex;
+    font-weight: 900;
+}
+
+.per-night{
+    display: contents;
+    font-weight: 300;
+}
