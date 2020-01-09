@@ -28,6 +28,7 @@ export default class Dashboard extends React.Component {
                       price={spot.price.basePrice.toString()}
                       key={spot.id}
                       imageUrl={spot.imageUrl}
+                      id={spot.id}
                       />
                   ))  
                 }

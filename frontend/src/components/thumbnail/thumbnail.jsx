@@ -11,7 +11,7 @@ class Thumbnail extends React.Component {
 
     render(){
         return (
-          <div className="thumbnail">
+          <div className="thumbnail" onClick={() => this.props.history.push(`/spot/show/${this.props.id}`)}>
             <img className="thumbnail-image" src={this.props.imageUrl} />
 
             <div className="name">

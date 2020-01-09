@@ -48,6 +48,8 @@ const locationSchema = new Schema({
   point: pointSchema
 });
 
+locationSchema.index({point: "2dsphere"});
+
 const SpotSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
