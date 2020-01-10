@@ -4,6 +4,7 @@ const app = express();
 const db = require('./config/keys').mongoURI;
 const users = require("./routes/api/users");
 const spots = require("./routes/api/spots");
+const search = require("./routes/api/search");
 const bodyParser = require('body-parser');
 const User = require('./models/User');
 const passport = require('passport');
@@ -20,7 +21,10 @@ if (process.env.NODE_ENV === "production") {
 
 mongoose
     .connect(db, { useNewUrlParser: true })
-    .then(() => console.log("Connected to MongoDB successfully"))
+    .then(() => {
+     // Spot.collection.createIndex({ "location.point": "2dsphere"});
+      Spot.collection.getIndexes().then(indexes => console.log("indexes", indexes));
+    })
     .catch(err => console.log(err));
 
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -41,6 +45,7 @@ require('./config/passport')(passport);
 
 app.use("/api/users", users);
 app.use("/api/spots", spots);
+app.use("/api/search", search);
 app.use("/api/upload", fileUpload)
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

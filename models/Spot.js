@@ -4,12 +4,13 @@ const Schema = mongoose.Schema;
 const pointSchema = new Schema({
   type: {
     type: String,
-    enum: ["Point"],
+    default: "Point",
     required: true
   },
   coordinates: {
     type: [Number],
-    required: true
+    required: true,
+    index: '2dsphere'
   }
 });
 
@@ -48,8 +49,6 @@ const locationSchema = new Schema({
   point: pointSchema
 });
 
-locationSchema.index({point: "2dsphere"});
-
 const SpotSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
@@ -65,7 +64,25 @@ const SpotSchema = new Schema({
     rooms: Number
   },
   bathrooms: Number,
-  location: locationSchema,
+  location: {
+    streetAddress: String,
+    suite: String,
+    country: String,
+    city: String,
+    state: String,
+    zip: String,
+  },
+  precise: {
+    type: {
+      type: String,
+      default: "Point"
+    },
+    coordinates: {
+      type: [Number],
+      default: [-97.1251805, 33.088988]
+      //index: '2dsphere'
+    }
+  },
   amenities: {
     regular: [String],
     safety: [String]
@@ -102,6 +119,8 @@ const SpotSchema = new Schema({
   }
 });
 
+SpotSchema.index({"precise": "2dsphere"});
 
 
-module.exports = Spot = mongoose.model('Spot', SpotSchema);
+Spot = mongoose.model('Spot', SpotSchema);
+module.exports = Spot;

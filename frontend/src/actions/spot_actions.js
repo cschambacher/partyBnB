@@ -21,4 +21,4 @@ export const updateSpot = (spotId, updatePayload) => dispatch =>
   updateCurrentSpot(spotId, updatePayload).then(spot => dispatch(receiveCurrentSpot(spot)));
 
 export const fetchSpot = (spotId) => dispatch =>
-spotAPIUtil.fetchSpot(spotId).then(spot => dispatch(receiveCurrentSpot));
+spotAPIUtil.fetchSpot(spotId).then(spot => dispatch(receiveCurrentSpot(spot)));

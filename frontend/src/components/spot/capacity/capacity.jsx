@@ -6,8 +6,8 @@ class Capacity extends React.Component {
     constructor(props){
         super(props);
         this.state = {
-            maxGuestSize: this.props.spot.capacity.maxGuestSize ? this.props.spot.capacity.maxGuestSize : 25,
-            rooms: this.props.spot.capacity.rooms ? this.props.spot.capacity.rooms : 3
+            maxGuestSize: Object.values(this.props.spot).length === 0 ? 25 : this.props.spot.capacity.maxGuestSize,
+            rooms: Object.values(this.props.spot).length === 0 ? 3 : this.props.spot.capacity.rooms
         }
     }
 
@@ -30,41 +30,69 @@ class Capacity extends React.Component {
     }
     render() {
         return (
-            <div className="capacity">
-                <div className="white-background">
-                    <p className="form-header">How many guests can your place</p>
-                    <p className="form-header">accomodate?</p>
-                    <p className="form-description">Check that you have enough rooms to accommodate all your guests comfortably.</p>
-                    <div className='space-between'>
-                        <p className="capacity-label">Guests</p>
-                        <p className={`form-decrement ${this.state.maxGuestSize === 0 && "dull"}`}
-                            onClick={() => this.decrease('maxGuestSize')}>-</p>
-                        <p className="value">{this.state.maxGuestSize}</p>
-                        <p onClick={() => this.increase('maxGuestSize')}
-                            className="form-increment">+</p>
-                    </div>
-                    <p className="form-question">How many rooms can guests use?</p>
-                    <div className='space-between'>
-                        <p className="capacity-label">Rooms</p>
-                        <p className={`form-decrement ${this.state.rooms === 0 && "dull"}`}
-                            onClick={() => this.decrease('rooms')}>-</p>
-                        <p className="value">{this.state.rooms}</p>
-                        <p className="form-increment"
-                            onClick={() => this.increase('rooms')}>+</p>
-                    </div>
-                    <div className="next-back">
-                        <p>Back</p>
-                        <button className="next-btn"
-                        onClick={() => {
-                            this.props.updateSpot(this.props.match.params.spotId, {
-                                capacity: this.state
-                            });
-                            console.log("pressed");
-                        }}>Next</button>
-                    </div>
+          <div className="capacity">
+            <div className="white-background">
+              <p className="form-header">How many guests can your place</p>
+              <p className="form-header">accomodate?</p>
+              <p className="form-description">
+                Check that you have enough rooms to accommodate all your guests
+                comfortably.
+              </p>
+              <div className="space-between">
+                <p className="capacity-label">Guests</p>
+                <p
+                  className={`form-decrement ${this.state.maxGuestSize === 0 &&
+                    "dull"}`}
+                  onClick={() => this.decrease("maxGuestSize")}
+                >
+                  -
+                </p>
+                <p className="value">{this.state.maxGuestSize}</p>
+                <p
+                  onClick={() => this.increase("maxGuestSize")}
+                  className="form-increment"
+                >
+                  +
+                </p>
+              </div>
+              <p className="form-question">How many rooms can guests use?</p>
+              <div className="space-between">
+                <p className="capacity-label">Rooms</p>
+                <p
+                  className={`form-decrement ${this.state.rooms === 0 &&
+                    "dull"}`}
+                  onClick={() => this.decrease("rooms")}
+                >
+                  -
+                </p>
+                <p className="value">{this.state.rooms}</p>
+                <p
+                  className="form-increment"
+                  onClick={() => this.increase("rooms")}
+                >
+                  +
+                </p>
+              </div>
+              <div className="next-back">
+                <div className="row">
+                  <span className="arrow-left"></span>
+                  <p onClick={() => this.props.history.goBack()}>Back</p>
                 </div>
+                <button
+                  className="next-btn"
+                  onClick={() => {
+                    this.props.updateSpot(this.props.match.params.spotId, {
+                      capacity: this.state
+                    });
+                    console.log("pressed");
+                  }}
+                >
+                  Next
+                </button>
+              </div>
             </div>
-        )
+          </div>
+        );
     }
 }
 

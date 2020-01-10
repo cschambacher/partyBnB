@@ -20,7 +20,7 @@
 //          state: faker.address.state(),
 //          point: {
 //            type: "Point",
-//            coordinates: [faker.address.latitude(), faker.address.longitude()]
+//              coordinates: [parseFloat(faker.address.longitude()), parseFloat(faker.address.latitude()), ]
 //          }
 //        },
 //        user: "5e140c4388c1c30a83c75690",
@@ -33,5 +33,5 @@
 //        imageUrl: `https://partybnb-seeder.s3.us-east-2.amazonaws.com/${images[Math.floor(Math.random() * 14)]}`,
 //        published: true
 //      });
-//      console.log("spot created");//
-   // } }).catch(err => console.log(err));
+//      console.log("spot created"); } }).catch(err => console.log(err));
+//      console.log(typeof faker.address.longitude())
