@@ -11,11 +11,11 @@ class Listing extends React.Component {
         <div>
           <div>Are you listing on Airbnb as part of a company?</div>
           <div>
-            <input type="radio"> Condominium </input>
+            <input type="radio" />
             <label>Yes, I work for or run a business</label>
           </div>
           <div>
-            <input type="radio"></input>
+            <input type="radio" />
             <label>No, that doesn’t sound like me</label>
             <div>
               This helps you get the right features for how you host—it won’t

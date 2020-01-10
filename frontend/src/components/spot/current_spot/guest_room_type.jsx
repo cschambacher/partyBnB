@@ -12,16 +12,16 @@ class GuestRoomType extends React.Component {
           <div>What will guest have?</div>
           <div>
             <div>
-              <input type="radio"></input>
+              <input type="radio" />
               <label>Entire place</label>
             </div>
             <div>
-              <input type="radio"></input>
+              <input type="radio" />
               <label>Private place</label>
             </div>
             <div>
-              <input type="radio"></input>
-              <label>Shared Room</label>
+              <input type="radio" />
+              <label>Shared room</label>
             </div>
           </div>
         </div>

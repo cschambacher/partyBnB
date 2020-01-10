@@ -13,24 +13,25 @@ class PropertyType extends React.Component{
             </div>
             <div className="property-buttons-container">
               <div>
-                <input type="radio"> Apartment </input>
+                <input type="radio" />
+                <label>Apartment</label>
               </div>
               <div>
-                <input type="radio"> Condominium </input>
+                <input type="radio" />
+                <label>Condominium</label>
               </div>
               <div>
-                <input type="radio"> Casa partiular </input>
+                <input type="radio" />
+                <label>Casa particular</label>
               </div>
               <div>
-                <input type="radio"> Unique Space </input>
+                <input type="radio" />
+                <label>Loft</label>
               </div>
               <div>
-                <input type="radio"> Bed and Breakfast </input>
+                <input type="radio" />
+                <label>Serviced apartment</label>
               </div>
-              <div>
-                <input type="radio"> Boutique Hotel </input>
-              </div>
-              <div>description....</div>
             </div>
           </div>
         );
