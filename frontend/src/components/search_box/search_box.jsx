@@ -67,13 +67,15 @@ class SearchBox extends React.Component {
                   type="text"
                   {...getInputProps({
                     placeholder: "Anywhere",
-                    required: true
+                    required: true,
+                    className: "input-padding"
                   })}
                 />
               </div>
               <div className="autocomplete-dropdown-container">
                 {loading && <div>Loading...</div>}
                 {suggestions.map(suggestion => {
+                  debugger;
                   const className = suggestion.active
                     ? "suggestion-item--active row"
                     : "suggestion-item row";

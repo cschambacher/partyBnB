@@ -3,10 +3,11 @@ const router = express.Router();
 const Spot = require("../../models/Spot");
 
 router.get("/location", (req, res) => {
-    const distanceInMiles = req.body.distance;
+    const distanceInMiles = req.query.distance;
     const distanceInMeters = distanceInMiles * 1609.34;
-    const long = req.body.long;
-    const lat = req.body.lat;
+  const long = parseFloat(req.query.long);
+  const lat = parseFloat(req.query.lat);
+    console.log("lat", lat);
 //    Spot.find(
 //        {"location.point": {
 //            $near: {
@@ -27,13 +28,16 @@ router.get("/location", (req, res) => {
           },
           distanceField: "dist.calculated",
           maxDistance: distanceInMeters,
-          spherical: true
+          spherical: true,
+          inludeLocs: "dist.precise"
         }
       },
       { $sort: { distance: -1 } }
     ], 
     (err, docs) => {
-        if (err) res.send(err);
+        if (err) res.status(404).json({ nospotsfound: err });
         res.json(docs);
     });
 })
+
+module.exports = router;
