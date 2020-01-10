@@ -24,3 +24,4 @@ export default class CurrentSpot extends React.Component {
         );
     }
 }
+

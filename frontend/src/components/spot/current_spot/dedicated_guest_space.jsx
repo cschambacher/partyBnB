@@ -11,11 +11,11 @@ class DedicatedGuestSpace extends React.Component {
         <div>
           <div>Is this setup as a dedicated guest space?</div>
           <div>
-            <input type="radio"> Condominium </input>
+            <input type="radio" />
             <label>Yes, it’s primarily set up for guests</label>
           </div>
           <div>
-            <input type="radio"></input>
+            <input type="radio" />
             <label>No, I keep my personal belongings here</label>
           </div>
         </div>
