@@ -1,0 +1,72 @@
+.spot-location {
+    width: 100%;
+    background-color: rgb(250,250,250);
+}
+
+.short {
+    width: 75%;
+}
+
+
+.white-background-location {
+    padding-top: 5%;
+    background-color: white;
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    padding-left: 10%;
+}
+
+.address-div {
+    padding: 20px 8px;
+    display: flex;
+    border: solid 1px #ccc;
+    input {
+        width: 100%;
+    }
+}
+
+.street-address-label {
+    margin-top: 2em;
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: .2em;
+}
+
+.city-div {
+    padding: 20px 8px;
+    display: flex;
+    border: solid 1px #ccc;
+    input {
+        width: 35%;
+    }
+    margin-right: 5em;
+}
+
+.zip-div {
+    padding: 20px 8px;
+    display: flex;
+    border: solid 1px #ccc;
+    width: 25%;
+    input {
+        width: 100%;
+    }
+    margin-right: 5em;
+}
+
+.address-row {
+    display: flex;
+}
+
+.label-row{
+    width: 57%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.empty-space {
+    height: 30vh;
+}
+
+.focused {
+    border: solid 2px rgb(54,133,137);
+}
