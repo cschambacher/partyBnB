@@ -10,7 +10,7 @@ import DashboardContainer from './dashboard/dasboard_container';
 import upload from './upload/upload'
 import HowToStart from './spot/how_to_start/how_to_start';
 import './reset.scss';
-import CurrentSpot from './spot/current_spot';
+import CurrentSpot from './spot/current_spot/current_spot';
 import Capacity from './spot/capacity/capacity';
 import Show from './spot/show/show';
 import SpotLocation from './spot/spot_location/spot_location';
