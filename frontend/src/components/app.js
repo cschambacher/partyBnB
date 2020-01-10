@@ -15,6 +15,8 @@ import Capacity from './spot/capacity/capacity';
 import Show from './spot/show/show';
 import SpotLocation from './spot/spot_location/spot_location';
 import SearchIndex from './search_index/search_index';
+import PlaceType from './spot/current_spot/step1_placetype';
+
 const App = () => (
   <div>
     <NavBarContainer />
@@ -33,6 +35,7 @@ const App = () => (
 
 
 
+      <ProtectedRoute exact path="/placetype/:spotId" component={PlaceType} />
       <ProtectedRoute exact path="/upload" component={upload} />
     </Switch>
   </div>
