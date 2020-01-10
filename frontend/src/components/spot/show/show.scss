@@ -1,0 +1,28 @@
+.show{
+    // border: 1px solid red;
+}
+
+.show-detail{
+    display: flex;
+  flex-wrap: wrap;
+  margin: 0 auto;
+  background: #fff;
+  width: 100%;
+  border: 1px solid red;
+  border-top: 0;
+}
+.show-left{
+width: 60%;
+  min-height: 200px;
+  padding: 20px;
+//   border: 1px solid purple;
+}
+
+.show-right{
+width: 300px;;
+  min-height: 200px;
+  padding: 20px;
+  padding-right: 19px;
+  border-radius: 7px;
+border: 1px solid #ccc;
+}
