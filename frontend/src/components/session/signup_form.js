@@ -107,11 +107,11 @@ class SignupForm extends React.Component {
                             placeholder="Password"
                         />
                         </div>
-                        {/* <input type="password"
+                        <input type="password"
                             value={this.state.password2}
                             onChange={this.update('password2')}
                             placeholder="Confirm Password"
-                        /> */}
+                        />
                         <h3>Birthday</h3>
                         <p>To sign up, you need to be at least 18. Other people who use Airbnb won’t see your birthday.</p> 
                         <div className="birthday">
