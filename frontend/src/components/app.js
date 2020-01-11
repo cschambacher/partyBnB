@@ -28,11 +28,12 @@ const App = () => (
       <ProtectedRoute exact path="/capacity/:spotId" component={Capacity} />
       <Route exact path="/spot/show/:spotId" component={Show} />
       <ProtectedRoute exact path="/location/:spotId" component={SpotLocation} />
-      <ProtectedRoute exact path="/upload" component={upload} />
+
       <Route exact path="/search/:state/:guests" component={SearchIndex} />
 
 
 
+      <ProtectedRoute exact path="/upload" component={upload} />
     </Switch>
   </div>
 );
