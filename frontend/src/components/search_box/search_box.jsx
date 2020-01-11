@@ -1,5 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { withRouter } from 'react-router-dom';
 import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import PlacesAutocomplete, {
   geocodeByAddress,
@@ -19,8 +20,24 @@ class SearchBox extends React.Component {
     super(props);
     this.state = {
       address: "",
-      date: new Date()
+      date: new Date(),
+      maxGuestSize: 25,
+      rooms: 3 
     };
+  }
+
+  increase = arg => {
+    this.setState(prevState => (
+      { [arg]: prevState[arg] + 1 }
+    ))
+  }
+
+  decrease = arg => {
+    if (this.state[arg] > 0) {
+      this.setState(prevState => (
+        { [arg]: prevState[arg] - 1 }
+      ))
+    } else return;
   }
 
   handleSelect = address => {
@@ -31,7 +48,9 @@ class SearchBox extends React.Component {
         this.setState({ lat: latLng.lat, lng: latLng.lng });
       })
       .catch(error => console.error("Error", error));
-    this.setState({address});
+      const state = address.split(",")[1];
+      console.log("state", state);
+    this.setState({address, state});
   };
   render() {
     const searchOptions = {
@@ -117,10 +136,31 @@ class SearchBox extends React.Component {
             }}
           />
         </MuiPickersUtilsProvider>
-        <button className="search-btn">Search</button>
+        <div className="search-guest">
+          <p className="capacity-label">Guests</p>
+          <p
+            className={`form-decrement ${this.state.maxGuestSize === 0 &&
+              "dull"}`}
+            onClick={() => this.decrease("maxGuestSize")}
+          >
+            -
+                </p>
+          <p className="value">{this.state.maxGuestSize}</p>
+          <p
+            onClick={() => this.increase("maxGuestSize")}
+            className="form-increment"
+          >
+            +
+                </p>
+        </div>
+        <button onClick={() => {
+          if (this.state.address.length > 0){
+            this.props.history.push(`/search/${this.state.state}/${this.state.maxGuestSize}`)
+          }
+        }} className="search-btn">Search</button>
       </div>
     );
   }
 }
 
-export default SearchBox;
+export default withRouter(SearchBox);

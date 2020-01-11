@@ -16,7 +16,7 @@ class HowToStart extends React.Component {
         createCurrentSpot().then(spot => {
           console.log(spot);
           this.props.receiveCurrentSpot(spot.data);
-          this.props.history.push(`/location/${spot.data._id}`);
+          this.props.history.push(`/capacity/${spot.data._id}`);
         }).catch(err => console.log(err));
     }
     render() {

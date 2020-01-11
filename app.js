@@ -22,7 +22,6 @@ if (process.env.NODE_ENV === "production") {
 mongoose
     .connect(db, { useNewUrlParser: true })
     .then(() => {
-     // Spot.collection.createIndex({ "location.point": "2dsphere"});
       Spot.collection.getIndexes().then(indexes => console.log("indexes", indexes));
     })
     .catch(err => console.log(err));

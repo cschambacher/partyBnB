@@ -49,6 +49,16 @@ const locationSchema = new Schema({
   point: pointSchema
 });
 
+const reviewSchema = new Schema({
+  user: {
+    type: Schema.Types.ObjectId,
+    ref: "User"
+  },
+  review: String,
+  rating: Number
+});
+
+
 const SpotSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
@@ -69,7 +79,10 @@ const SpotSchema = new Schema({
     suite: String,
     country: String,
     city: String,
-    state: String,
+    state: {
+      type: String,
+      set: v => v.toUppercase()
+    },
     zip: String,
   },
   precise: {
@@ -116,6 +129,10 @@ const SpotSchema = new Schema({
     basePrice: Number,
     minPrice: Number,
     maxPrice: Number
+  },
+  reviews: {
+    average: Number,
+    reviews: [reviewSchema]
   }
 });
 
