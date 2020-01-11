@@ -7,6 +7,7 @@ const Spot = require("../../models/Spot");
 
 router.get("/", (req, res) => {
   Spot.find({published: true})
+    .populate('user', 'email')
     .sort({ created_at: -1 })
     .then(spots => res.json(spots))
     .catch(err => res.status(404).json({ nospotsfound: "No spots found" }));

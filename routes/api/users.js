@@ -59,6 +59,15 @@ router.post("/register", (req, res) => {
         }
     });
 });
+
+router.get('/info/:userId', (req, res) => {
+    const userId = req.params.userId
+    console.log(userId);
+    User.findById(userId, (err, user) => {
+        if (err) res.status(400).json(err);
+        res.json(user);
+    })
+} );
 router.post("/login", (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
 

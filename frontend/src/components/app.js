@@ -14,6 +14,7 @@ import CurrentSpot from './spot/current_spot/current_spot';
 import Capacity from './spot/capacity/capacity';
 import Show from './spot/show/show';
 import SpotLocation from './spot/spot_location/spot_location';
+import SearchIndex from './search_index/search_index';
 const App = () => (
   <div>
     <NavBarContainer />
@@ -28,6 +29,10 @@ const App = () => (
       <Route exact path="/spot/show/:spotId" component={Show} />
       <ProtectedRoute exact path="/location/:spotId" component={SpotLocation} />
       <ProtectedRoute exact path="/upload" component={upload} />
+      <Route exact path="/search/:state/:guests" component={SearchIndex} />
+
+
+
     </Switch>
   </div>
 );

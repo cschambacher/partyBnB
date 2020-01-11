@@ -14,7 +14,7 @@ class Dashboard extends React.Component {
 
      componentDidMount(){
         fetchSpots().then(spots => {
-            console.log(spots);
+            console.log("spots", spots);
             this.setState({spots: spots.data});
         });
     }
@@ -31,6 +31,7 @@ class Dashboard extends React.Component {
                       key={spot.id}
                       imageUrl={spot.imageUrl}
                       id={spot._id}
+                      state={spot.location.state}
                       />
                   ))  
                 }

@@ -38,6 +38,17 @@ router.get("/location", (req, res) => {
         if (err) res.status(404).json({ nospotsfound: err });
         res.json(docs);
     });
+});
+
+router.get("/state", (req, res) => {
+  const rock = req.query.state;
+  const maxGuestSize = req.query.maxGuestSize;
+  console.log("state", rock);
+  Spot.find({"location.state": rock}, (err, docs) => {
+    console.log(docs);
+    if (err) res.status(404).json({ nospotsfound: err });
+    res.json(docs);
+  }).exists("location")
 })
 
 module.exports = router;
