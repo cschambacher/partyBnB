@@ -17,13 +17,11 @@ class PlaceType extends React.Component {
         // this.handleSubmit = this.handleSubmit.bind(this);
     }
     componentDidMount() {
-        fetchSpot(this.props.match.params.spotId).then(spot => {
-            console.log(spot);
-        });
+        this.props.fetchSpot(this.props.match.params.spotId);
     }
    
     render() {
-        console.log(spot);
+        // console.log(spot);
         return (
             <div>
                 <div>What kind of spot are you listing?</div>
@@ -99,7 +97,11 @@ class PlaceType extends React.Component {
                                 whatWillGuestsHave: this.state,
                                 dedicatedGuestSpace: this.state,
                                 listingForOtherCompany: this.state
-                            });
+                            }).then(spot => {
+                                console.log(spot);
+                                // this.props.receiveCurrentSpot(spot.data);
+                                this.props.history.push(`/location/${this.props.match.params.spotId}`);
+                            }).catch(err => console.log(err));
                             console.log("pressed");
                         }}
                     >
