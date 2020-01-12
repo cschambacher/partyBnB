@@ -7,14 +7,17 @@ import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import DashboardContainer from './dashboard/dasboard_container';
-import upload from './upload/upload'
+import upload from './upload/step3_upload';
 import HowToStart from './spot/how_to_start/how_to_start';
 import './reset.scss';
-import CurrentSpot from './spot/current_spot/current_spot';
+// import CurrentSpot from './spot/current_spot/current_spot';
 import Capacity from './spot/capacity/capacity';
 import Show from './spot/show/show';
 import SpotLocation from './spot/spot_location/spot_location';
 import SearchIndex from './search_index/search_index';
+import PlaceType from './spot/current_spot/step1_placetype';
+import description from './spot/description/step4_description';
+
 const App = () => (
   <div>
     <NavBarContainer />
@@ -24,7 +27,7 @@ const App = () => (
       <AuthRoute exact path="/" component={MainPage} />
       <ProtectedRoute exact path="/dashboard" component={DashboardContainer} />
       <ProtectedRoute exact path="/create_listing" component={HowToStart} />
-      <ProtectedRoute exact path="/newListing/:spotId" component={CurrentSpot} />
+      {/* <ProtectedRoute exact path="/newListing/:spotId" component={CurrentSpot} /> */}
       <ProtectedRoute exact path="/capacity/:spotId" component={Capacity} />
       <Route exact path="/spot/show/:spotId" component={Show} />
       <ProtectedRoute exact path="/location/:spotId" component={SpotLocation} />
@@ -33,7 +36,9 @@ const App = () => (
 
 
 
-      <ProtectedRoute exact path="/upload" component={upload} />
+      <ProtectedRoute exact path="/placetype/:spotId" component={PlaceType} />
+      <ProtectedRoute exact path="/upload/:spotId" component={upload} />
+      <ProtectedRoute exact path="/description/:spotId" component={description} />
     </Switch>
   </div>
 );

@@ -24,6 +24,9 @@ class SpotLocation extends Component {
       suiteClass: ["address-div short"]
     };
   }
+  componentDidMount() {
+    this.props.fetchSpot(this.props.match.params.spotId);
+  }
 
   inFocus = arg => {
     this.setState(prevState => prevState[arg].push("focused"));
@@ -184,7 +187,10 @@ class SpotLocation extends Component {
                     type: "Point",
                     coordinates: [this.state.lng, this.state.lat]
                   }
-                });
+                }).then(spot => {
+                  console.log(spot);
+                  this.props.history.push(`/upload/${this.props.match.params.spotId}`);
+                }).catch(err => console.log(err));
                 console.log("pressed");
               }}
             >
