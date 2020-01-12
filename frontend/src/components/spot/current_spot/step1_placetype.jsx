@@ -8,7 +8,7 @@ class PlaceType extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            placeType: null,
+            placeType: "",
             // propertyType: "",
             whatWillGuestsHave: null,
             dedicatedGuestSpace: true,
@@ -19,35 +19,42 @@ class PlaceType extends React.Component {
     componentDidMount() {
         this.props.fetchSpot(this.props.match.params.spotId);
     }
+
    
     render() {
-        // console.log(spot);
+        
         return (
             <div>
                 <div>What kind of spot are you listing?</div>
                 <div className="property-type-list">
                     <ul>
-                        <li onClick={e => this.setState({ placeType: e.currentTarget.value })}
-                            value="Apartment">Apartment</li>
-                        <li onClick={e => this.setState({ placeType: e.currentTarget.value })}
-                            value="House">House</li>
-                        <li onClick={e => this.setState({ placeType: e.currentTarget.value })}
-                            value="Secondary unit">Secondary unit</li>
-                        <li onClick={e => this.setState({ placeType: e.currentTarget.value })}
-                            value="Unique Space">Unique Space</li>
-                        <li onClick={e => this.setState({ placeType: e.currentTarget.value })}
-                            value="Hotel"> Hotel</li>
+                        <li value="Apartment" onClick={e => this.setState({ placeType: e.currentTarget.value })}
+                            >Apartment</li>
+                        <li value="House" onClick={e => this.setState({ placeType: e.currentTarget.value })}
+                            >House</li>
+                        <li value="Secondary unit" onClick={e => this.setState({ placeType: e.currentTarget.value })}
+                            >Secondary unit</li>
+                        <li value="Unique Space" onClick={e => this.setState({ placeType: e.currentTarget.value })}
+                            >Unique Space</li>
+                        <li value="Hotel" onClick={e => this.setState({ placeType: e.currentTarget.value })}
+                            > Hotel</li>
                     </ul>
                     
                 </div>
                 <div className="property-type-guest">
                     <div>Is this setup as a dedicated guest space?</div>
                     <div>
-                        <input type="radio" />
+                        <input type="radio" 
+                            value={true}
+                            onChange={(e) => this.setState({ dedicatedGuestSpace: e.currentTarget.value })}
+                            checked={this.state.dedicatedGuestSpace === true} />
                         <label>Yes, it’s primarily set up for guests</label>
                     </div>
                     <div>
-                        <input type="radio" />
+                        <input type="radio" 
+                            value={false}
+                            onChange={(e) => this.setState({ dedicatedGuestSpace: e.currentTarget.value })}
+                            checked={this.state.dedicatedGuestSpace === false} />
                         <label>No, I keep my personal belongings here</label>
                     </div>
                 </div>
@@ -55,16 +62,25 @@ class PlaceType extends React.Component {
                     <div>What will guest have?</div>
                     <div>
                         <div>
-                            <input type="radio" />
+                            <input type="radio" 
+                            value="all the space"
+                                onChange={(e) => this.setState({ whatWillGuestsHave: e.currentTarget.value })}
+                                checked={this.state.whatWillGuestsHave === "all the space"} />
                             <label>Entire place</label>
                         </div>
                         <div>
-                            <input type="radio" />
+                            <input type="radio" 
+                            value="private space"
+                                onChange={(e) => this.setState({ whatWillGuestsHave: e.currentTarget.value })}
+                                checked={this.state.whatWillGuestsHave === "private space"} />
                             <label>Private place</label>
                         </div>
                         <div>
-                            <input type="radio" />
-                            <label>Shared room</label>
+                            <input type="radio" 
+                                value="shared space"
+                                onChange={(e) => this.setState({ whatWillGuestsHave: e.currentTarget.value })}
+                                checked={this.state.whatWillGuestsHave === "shared space"} />
+                            <label>Shared party room</label>
                         </div>
                     </div>
                 </div>
@@ -72,11 +88,16 @@ class PlaceType extends React.Component {
                 <div className="placetype-listing">
                     <div>Are you listing on Airbnb as part of a company?</div>
                     <div>
-                        <input type="radio" />
+                        <input type="radio" 
+                            value={true}
+                            onChange={(e) => this.setState({ listingForOtherCompany: e.currentTarget.value })}
+                            checked={this.state.listingForOtherCompany === true} />
                         <label>Yes, I work for or run a business</label>
                     </div>
                     <div>
-                        <input type="radio" />
+                        <input type="radio" value={false}
+                            onChange={(e) => this.setState({ listingForOtherCompany: e.currentTarget.value })}
+                            checked={this.state.listingForOtherCompany === false} />
                         <label>No, that doesn’t sound like me</label>
                         <div>
                             This helps you get the right features for how you host—it won’t

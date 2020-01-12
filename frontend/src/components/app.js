@@ -7,7 +7,7 @@ import MainPage from './main/main_page';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
 import DashboardContainer from './dashboard/dasboard_container';
-import upload from './upload/upload'
+import upload from './upload/step3_upload';
 import HowToStart from './spot/how_to_start/how_to_start';
 import './reset.scss';
 import CurrentSpot from './spot/current_spot/current_spot';
@@ -16,6 +16,7 @@ import Show from './spot/show/show';
 import SpotLocation from './spot/spot_location/spot_location';
 import SearchIndex from './search_index/search_index';
 import PlaceType from './spot/current_spot/step1_placetype';
+import description from './spot/description/step4_description';
 
 const App = () => (
   <div>
@@ -36,7 +37,8 @@ const App = () => (
 
 
       <ProtectedRoute exact path="/placetype/:spotId" component={PlaceType} />
-      <ProtectedRoute exact path="/upload" component={upload} />
+      <ProtectedRoute exact path="/upload/:spotId" component={upload} />
+      <ProtectedRoute exact path="/description/:spotId" component={description} />
     </Switch>
   </div>
 );

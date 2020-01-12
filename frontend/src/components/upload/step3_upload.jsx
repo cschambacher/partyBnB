@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { updateSpot, fetchSpot } from "../../../actions/spot_actions";
+import { updateSpot, fetchSpot } from "../../actions/spot_actions";
 import './upload.scss'
 
 class Upload extends React.Component {
@@ -70,7 +70,7 @@ class Upload extends React.Component {
                                 listingForOtherCompany: this.state
                             }).then(spot => {
                                 console.log(spot);
-                                this.props.history.push(`/location/${this.props.match.params.spotId}`);
+                                this.props.history.push(`/description/${this.props.match.params.spotId}`);
                             }).catch(err => console.log(err));
                             console.log("pressed");
                         }}
