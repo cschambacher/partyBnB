@@ -29,6 +29,7 @@ class Capacity extends React.Component {
         } else return;
     }
     render() {
+      console.log(this.props.spotForm);
         return (
           <div className="capacity">
             <div className="white-background">
@@ -83,7 +84,11 @@ class Capacity extends React.Component {
                   onClick={() => {
                     this.props.updateSpot(this.props.match.params.spotId, {
                       capacity: this.state
-                    });
+                    }).then(spot => {
+                      console.log(spot);
+                      // this.props.receiveCurrentSpot(spot.data);
+                      this.props.history.push(`/spot/show/${this.props.match.params.spotId}`);
+                    }).catch(err => console.log(err));
                     console.log("pressed");
                   }}
                 >

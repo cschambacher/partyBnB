@@ -85,7 +85,7 @@ class Description extends React.Component {
                             }).then(spot => {
                                 console.log(spot);
                                 // this.props.receiveCurrentSpot(spot.data);
-                                this.props.history.push(`/spot/show/${this.props.match.params.spotId}`);
+                                this.props.history.push(`/capacity/${this.props.match.params.spotId}`);
                             }).catch(err => console.log(err));
                             console.log("pressed");
                         }}
