@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchSpot } from '../../../util/spot_util';
+import { fetchSpot, deleteSpot } from '../../../util/spot_util';
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -23,21 +23,28 @@ class Show extends Component {
     }
 
     componentDidMount() {
+        console.log("mount", this.props);
         fetchSpot(this.props.match.params.spotId).then(spot => {
             console.log(spot);
             this.setState({ spot: spot.data });
         });
     }
-
-    createBooking = () => {
-        console.log("booking");
-    }
-
+    // removeBtn(currUser, spot) {
+    //     if (currUser === spot.user) {
+    //         return <button className="spot-list-btn-pin" onClick={() => deleteSpot(this.props.match.params.spotId)}>Remove</button>
+    //     } else {
+    //         return <span></span>;
+    //     }
+    // }
     render() {
         if (!this.state.spot) return null;
         const description = Object.values(this.state.spot.description);
         const price = this.state.spot.price.basePrice;
         const rating = this.props.rating;
+        const {currUser} = this.props;
+        console.log(currUser);
+        console.log(this.state.spot);
+
         return (
 
             <div className="show">
@@ -53,8 +60,14 @@ class Show extends Component {
                         <li>Overview</li>
                         <li>Reviews</li>
                         <li>The Host</li>
-                        <li>Location</li>
-                        <li>Policies</li>
+                        <li>Edit</li>
+                        <li><button className="spot-list-btn-pin" 
+                            onClick={() => deleteSpot(this.props.match.params.spotId)
+                            .then(spot => {
+                            console.log("spot deleted");
+                            this.props.history.push(`/dashboard`);
+                        }).catch(err => console.log(err))}>Remove</button></li>
+                        {/* <li>{this.removeBtn(currUser, this.state.spot)}</li> */}
                     </ul>
                 </div>
                 <div className="show-detail">

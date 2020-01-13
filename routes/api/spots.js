@@ -62,6 +62,14 @@ router.patch("/:id", passport.authenticate('jwt', {session: false}), (req, res) 
   
     }
 );
+// router.delete("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
+//   console.log(req.body);
+//   Spot.findByIdAndRemove(req.params.id, req.body, function (err, post) {
+//     if (err) return next(err);
+//     res.json(post);
+//   });
+// }
+// );
 
 router.delete("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
   Spot.findById(req.params.id, (err, spot) => {
