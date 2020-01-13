@@ -1,0 +1,100 @@
+.step1-form{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 1300px;
+}
+
+.placetype-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: left;
+    width: 734px;
+    height: 1134px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: 50px;
+    font-size: 18px;
+    color: rgb(72, 72, 72) ;
+    // border: 1px solid #e4e4e4;
+    background-color: #ffffff;
+}
+.placetype-form h1{
+font-size: 24px ;
+    font-weight: 800 ;
+    line-height: 1.25em ;
+    color: #484848 ;
+}
+.placetype-form h3{
+font-size: 24px ;
+    font-weight: 800 ;
+    line-height: 1.25em ;
+    color: rgb(118, 118, 118);
+}
+.placetype-form p{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.28571em;
+    color: rgb(118, 118, 118);
+}
+.property-type-list{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    // padding: 10px;
+}
+.property-type-list ul{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: left;
+    
+}
+.property-type-list li{
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+    border: 1px solid #e4e4e4;
+}
+.property-type-list li:hover{
+    background-color: cornflowerblue;
+    color:white;
+    cursor: pointer;
+}
+.active{
+    background-color: black;
+    color:white;
+    cursor: pointer;
+}
+
+.property-type-guest{
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.choice{
+    margin-top: 20px;
+    margin-bottom: 20px;
+    
+}
+.step1-form label{
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+.step1-form p{
+    font-size: 16px;
+    margin-top: 10px;
+}
+
+.property-type-guest label{
+   
+    font-weight: 700;
+}
+
+.radio {
+    
+    margin-right: 5px;
+    color: #008489;
+
+}
