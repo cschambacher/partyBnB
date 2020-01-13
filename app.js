@@ -3,6 +3,7 @@ const express = require("express");
 const app = express();
 const db = require('./config/keys').mongoURI;
 const users = require("./routes/api/users");
+const bookings = require("./routes/api/bookings");
 const spots = require("./routes/api/spots");
 const search = require("./routes/api/search");
 const bodyParser = require('body-parser');
@@ -45,6 +46,7 @@ require('./config/passport')(passport);
 app.use("/api/users", users);
 app.use("/api/spots", spots);
 app.use("/api/search", search);
-app.use("/api/upload", fileUpload)
+app.use("/api/upload", fileUpload);
+app.use("/api/booking", bookings);
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));
