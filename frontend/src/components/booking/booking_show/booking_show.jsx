@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
-
 export default class BookingShow extends Component {
+    componentDidMount(){
+        
+    }
     render() {
         const { booking } = this.props
         return (
