@@ -155,3 +155,16 @@
         margin-bottom: 7px;
     }
 }
+
+.empty-height {
+    height: 5vh;
+}
+
+.show-guest {
+    margin-top: .5em;
+    display: flex;
+    align-items: center;
+    width: 75%;
+    justify-content: space-between;
+    margin-bottom: 1.5em;
+}
