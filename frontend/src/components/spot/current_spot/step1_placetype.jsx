@@ -28,15 +28,15 @@ class PlaceType extends React.Component {
                 <div>What kind of spot are you listing?</div>
                 <div className="property-type-list">
                     <ul>
-                        <li value="Apartment" onClick={e => this.setState({ placeType: e.currentTarget.value })}
+                        <li value="Apartment" onClick={e => this.setState({ placeType: "Apartment" })}
                             >Apartment</li>
-                        <li value="House" onClick={e => this.setState({ placeType: e.currentTarget.value })}
+                        <li value="House" onClick={e => this.setState({ placeType: "House" })}
                             >House</li>
-                        <li value="Secondary unit" onClick={e => this.setState({ placeType: e.currentTarget.value })}
+                        <li value="Secondary unit" onClick={e => this.setState({ placeType: "Secondary unit" })}
                             >Secondary unit</li>
-                        <li value="Unique Space" onClick={e => this.setState({ placeType: e.currentTarget.value })}
+                        <li value="Unique Space" onClick={e => this.setState({ placeType: "Unique Space" })}
                             >Unique Space</li>
-                        <li value="Hotel" onClick={e => this.setState({ placeType: e.currentTarget.value })}
+                        <li value="Hotel" onClick={e => this.setState({ placeType: "Hotel" })}
                             > Hotel</li>
                     </ul>
                     

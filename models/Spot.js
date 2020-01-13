@@ -81,7 +81,7 @@ const SpotSchema = new Schema({
     city: String,
     state: {
       type: String,
-      set: v => v.toUppercase()
+      set: v => v.toUpperCase()
     },
     zip: String,
   },
