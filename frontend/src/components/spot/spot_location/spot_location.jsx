@@ -53,7 +53,7 @@ class SpotLocation extends Component {
     return (
       <div className="spot-location">
         <div className="white-background-location">
-          <p className="form-header">Where's your place located?</p>
+          <h1 className="form-header">Where's your place located?</h1>
           <p className="form-description">
             Guests will only get your exact address once they've booked a
             reservation
@@ -175,6 +175,7 @@ class SpotLocation extends Component {
             </div>
             <button
               className="next-btn"
+              disabled={this.state.address === "" || this.state.city === "" || this.state.zip === ""}
               onClick={() => {
                 this.props.updateSpot(this.props.match.params.spotId, {
                   location: {

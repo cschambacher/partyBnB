@@ -122,6 +122,7 @@ class PlaceType extends React.Component {
                         </div>
                         <button
                             className="next-btn"
+                            disabled={this.state.placeType === null}
                             onClick={() => {
                                 this.props.updateSpot(this.props.match.params.spotId, {
                                     placeType: this.state,
