@@ -117,7 +117,8 @@ class Upload extends React.Component {
                         <p onClick={() => this.props.history.goBack()}>Back</p>
                     </div>
                     <button
-                        className="next-btn"
+                        className={`grn-btn ${this.state.imageUrl !== "" && "sharpen"}`}
+                        disabled={this.state.imageUrl === ""}
                         onClick={this.handleSubmit}
 
                     >

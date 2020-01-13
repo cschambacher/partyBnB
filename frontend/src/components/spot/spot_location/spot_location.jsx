@@ -174,7 +174,7 @@ class SpotLocation extends Component {
               <p onClick={() => this.props.history.goBack()}>Back</p>
             </div>
             <button
-              className="next-btn"
+              className={`grn-btn ${(this.state.address !== "" && this.state.city !== "" && this.state.zip !== "") && "sharpen"}`}
               disabled={this.state.address === "" || this.state.city === "" || this.state.zip === ""}
               onClick={() => {
                 this.props.updateSpot(this.props.match.params.spotId, {

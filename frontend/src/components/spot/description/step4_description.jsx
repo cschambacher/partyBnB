@@ -76,7 +76,7 @@ class Description extends React.Component {
                             <p onClick={() => this.props.history.goBack()}>Back</p>
                         </div>
                         <button
-                            className="next-btn"
+                            className={`grn-btn ${(this.state.title !== "" && this.state.description !== "" && this.state.basePrice !== "") && "sharpen"}`}
                             onClick={() => {
                                 this.props.updateSpot(this.props.match.params.spotId, {
                                     description: {
