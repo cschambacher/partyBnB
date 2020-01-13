@@ -24,10 +24,25 @@ router.post("/", passport.authenticate("jwt", { session: false }), (req, res) =>
             return res.status(435).json({ statusMessage: "Overlapping booking. Spot already booked" })
         } else {
             const newBookingModel = new Booking(newBooking);
-            newBookingModel.save().then(booking => res.json(booking)).catch(error => console.log(error));
+            newBookingModel.save((err, booking) => {
+                if (err) console.log(err);
+                booking.populate('spot', (err, populatedBooking) => {
+                    if (err) console.log(err);
+                    return res.json(populatedBooking);
+                })
+            })
         }
     })
     //newBooking.save().then(booking => res.json(booking)).catch(error => console.log(error));
 }
 );
+
+router.get("/:bookingId", (req, res) => {
+    Booking.findById(req.params.bookingId)
+    .populate('spot')
+    .exec((err, booking) => {
+        if (err) console.log(err);
+        return res.json(booking);
+    })
+})
 module.exports = router;
