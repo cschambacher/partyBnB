@@ -39,51 +39,78 @@ class Upload extends React.Component {
             fileReader.readAsDataURL(file);
         }
     }
+    display(){
+        if (this.state.imageUrl === ""){
+            return <div className="upload-box">
+                <form className="upload-form">
+
+                    <div className="inner-upload-form-container">
+                        <div className="inner-upload-padding">
+                            <div className="upload-button-container-with-padding">
+
+                                <div className="upload-button-container">
+                                    <div className="upload-photos-button">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        } else {
+            return <img className="preview" src={this.state.imageUrl} />
+        }
+    }
 
     render() {
         console.log(this.state.imageUrl);
         
         return (
             <div>
-                <input className="upload-photos-file"
-                    type="file"
-                    onChange={this.handleFile}
-                />
+                
                 <div className="add-photos-to-listing">
                     <div className="upload-container">
                         <div className="upload-description">
                             <div className="upload-side">
                                 <div className="add-photos-container">
                                     <div className="add-photos-captions">
-                                        Add photos to your listing
+                                        <h3>Add photos to your listing</h3>
+                                    </div>
+                                    <div className="upload-photos-file">
+                                        <input className="upload-photos-btn"
+                                            type="file"
+                                            onChange={this.handleFile}
+                                        />
                                     </div>
                                     <div className="add-photos-reason">
-                                        Photos help guests imagine staying in your place. You can
-                                        start with one and add more after you publish.
+                                        <p>Photos help guests imagine staying in your place. You can
+                                        start with one and add more after you publish.</p>
                                     </div>
+                                    {this.display()}
                                 </div>
-                                <div className="upload-box">
+                                {/* <div className="upload-box">
                                     <form className="upload-form">
+                                        
                                         <div className="inner-upload-form-container">
                                             <div className="inner-upload-padding">
                                                 <div className="upload-button-container-with-padding">
+                                                    
                                                     <div className="upload-button-container">
                                                         <div className="upload-photos-button">
-                                                           
+                                                            
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
                 </div>
-                <div>
-                   
-                </div>
+                
                 <div className="next-back">
                     <div className="row">
                         <span className="arrow-left"></span>
