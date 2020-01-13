@@ -23,6 +23,7 @@ class Show extends Component {
     }
 
     componentDidMount() {
+        console.log("mount", this.props);
         fetchSpot(this.props.match.params.spotId).then(spot => {
             console.log(spot);
             this.setState({ spot: spot.data });
@@ -40,7 +41,8 @@ class Show extends Component {
         const description = Object.values(this.state.spot.description);
         const price = this.state.spot.price.basePrice;
         const rating = this.props.rating;
-        console.log(this.props);
+        const {currUser} = this.props;
+        console.log(currUser);
         console.log(this.state.spot);
 
         return (
