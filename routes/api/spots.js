@@ -41,6 +41,7 @@ router.post("/", passport.authenticate("jwt", { session: false }), (req, res) =>
 );
 
 router.patch("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
+  console.log(req.body);
   Spot.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, newSpot) => {
             if (err) {
                 console.log(err);

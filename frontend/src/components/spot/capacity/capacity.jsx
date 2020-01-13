@@ -29,7 +29,6 @@ class Capacity extends React.Component {
         } else return;
     }
     render() {
-      console.log(this.props.spotForm);
         return (
           <div className="capacity">
             <div className="white-background">
