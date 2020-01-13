@@ -10,3 +10,6 @@ export const fetchSpot = (spotId) => (
 export const stateGuestSearch = (state, guests) => (
     axios.get(`/api/search/state/?state=${state}&maxGuestSize=${guests}`)
 )
+export const deleteSpot = (spotId) => (
+    axios.delete(`/api/spots/${spotId}`)
+)

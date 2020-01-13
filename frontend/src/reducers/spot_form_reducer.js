@@ -1,6 +1,6 @@
 import {
   RECEIVE_CURRENT_SPOT,
-  RECEIVE_PLACE_TYPE
+  REMOVE_SPOT
 } from "../actions/spot_actions";
 
 const SpotFormReducer = (state = {}, action) => {
@@ -9,8 +9,10 @@ const SpotFormReducer = (state = {}, action) => {
     switch (action.type) {
         case RECEIVE_CURRENT_SPOT:
             return Object.assign({}, state, action.currentSpot.data);
-        // case RECEIVE_PLACE_TYPE:
-        //     return Object.assign({}, state, {placeType: action.placeType})
+        case REMOVE_SPOT:
+            let nextState = Object.assign({}, state);
+            delete nextState[action.spotId]
+            return nextState;
         default: 
         return state;
     }

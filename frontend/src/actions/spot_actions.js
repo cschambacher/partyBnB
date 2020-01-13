@@ -3,6 +3,7 @@ import * as spotAPIUtil from '../util/spot_util';
 
 export const RECEIVE_CURRENT_SPOT = 'RECEIVE_CURRENT_SPOT';
 export const RECEIVE_PLACE_TYPE = "RECEIVE_PLACE_TYPE";
+export const REMOVE_SPOT = 'REMOVE_SPOT';
 
 export const receiveCurrentSpot = currentSpot => {
     return {
@@ -22,3 +23,13 @@ export const updateSpot = (spotId, updatePayload) => dispatch =>
 
 export const fetchSpot = (spotId) => dispatch =>
 spotAPIUtil.fetchSpot(spotId).then(spot => dispatch(receiveCurrentSpot(spot)));
+
+export const deleteSpot = spotId => dispatch => {
+  debugger;
+  return spotAPIUtil.deleteSpot(spotId)
+    .then(() => dispatch(removeSpot(spotId)))
+};
+const removeSpot = spotId => ({
+  type: REMOVE_SPOT,
+  spotId
+});
