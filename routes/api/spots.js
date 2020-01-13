@@ -42,7 +42,6 @@ console.log(req.body);
 );
 
 router.patch("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
-<<<<<<< HEAD
   console.log(req.body);
   Spot.findById(req.params.id , (err, spot) => {
     if (err) console.log(err);
@@ -61,16 +60,6 @@ router.patch("/:id", passport.authenticate('jwt', {session: false}), (req, res) 
     }
   });
   
-=======
-  Spot.findByIdAndUpdate(req.params.id, req.body, {new: true}, (err, newSpot) => {
-            if (err) {
-                console.log(err);
-                return res
-                  .status(404)
-                  .json({ error: "There was an error with the update", err });
-          } else return res.json(newSpot);
-        });
->>>>>>> added remove on spotshow
     }
 );
 router.delete("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
@@ -82,20 +71,20 @@ router.delete("/:id", passport.authenticate('jwt', {session: false}), (req, res)
 }
 );
 
-router.delete("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
-  Spot.findById(req.params.id, (err, spot) => {
-    if (err) console.log(err);
-    if (spot.user.toString() === req.user.id) {
-      Spot.findByIdAndDelete(req.params.id, (err, spot) => {
-        if (err) res.status(404).json({type: "delete failed"});
-        return res.json({type: `${spot.id} successfully deleted`});
-      })
-    } else {
-      res.statusMessage = "Not Owner";
-      return res.status(401).json({message: "You are not the owner of this spot and can't delete it"})
-    }
-  })
-});
+// router.delete("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
+//   Spot.findById(req.params.id, (err, spot) => {
+//     if (err) console.log(err);
+//     if (spot.user.toString() === req.user.id) {
+//       Spot.findByIdAndDelete(req.params.id, (err, spot) => {
+//         if (err) res.status(404).json({type: "delete failed"});
+//         return res.json({type: `${spot.id} successfully deleted`});
+//       })
+//     } else {
+//       res.statusMessage = "Not Owner";
+//       return res.status(401).json({message: "You are not the owner of this spot and can't delete it"})
+//     }
+//   })
+// });
 
 module.exports = router;
 
