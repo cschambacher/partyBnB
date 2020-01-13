@@ -29,6 +29,10 @@ class Show extends Component {
         });
     }
 
+    createBooking = () => {
+        console.log("booking");
+    }
+
     render() {
         if (!this.state.spot) return null;
         const description = Object.values(this.state.spot.description);
@@ -124,7 +128,7 @@ class Show extends Component {
                                     }}
                                 />
                             </MuiPickersUtilsProvider>
-                            <button className="search-btn">Reserve</button>
+                            <button onClick={this.createBooking} className="search-btn">Reserve</button>
                             <small>You won’t be charged yet</small>
                         </div>
                     </div>
