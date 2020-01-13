@@ -1,0 +1,82 @@
+.description-container{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    width: 100%;
+    height: 1300px;
+}
+
+.description-form{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    width: 734px;
+    height: 1134px;
+   padding: 25px;
+   
+    // margin: 50px;
+    margin: 20px;
+    font-size: 18px;
+    color: rgb(72, 72, 72) ;
+    // border: 1px solid #e4e4e4;
+    background-color: #ffffff;
+    
+}
+.description-form h1{
+font-size: 24px ;
+    font-weight: 800 ;
+    line-height: 1.25em ;
+    color: #484848 ;
+}
+.description-form h3{
+font-size: 24px ;
+    font-weight: 800 ;
+    line-height: 1.25em ;
+    color: rgb(118, 118, 118);
+}
+.description-form p{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.28571em;
+    margin-bottom: 15px;
+    color: rgb(118, 118, 118);
+}
+
+.property-title input{
+    padding: 12px 5px;
+    display: flex;
+    width: 100%;
+     padding: 10px;
+     line-height: 54px;
+   border-radius: 7px;
+    border: 1px solid #e4e4e4;
+    margin-bottom: 20px;
+}
+
+.property-description textarea{
+    padding: 12px 5px;
+    display: flex;
+    width: 100%;
+     padding: 10px;
+     line-height: 54px;
+   border-radius: 7px;
+    border: 1px solid #e4e4e4;
+    margin-bottom: 20px;
+}
+.property-price-input{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.property-price input{
+    padding: 12px 5px;
+    display: flex;
+    width: 100%;
+     padding: 10px;
+     line-height: 54px;
+   border-radius: 7px;
+    border: 1px solid #e4e4e4;
+    margin-bottom: 20px;
+}
