@@ -70,8 +70,14 @@ const SpotSchema = new Schema({
   },
   placeType: placeTypeSchema,
   capacity: {
-    maxGuestSize: Number,
-    rooms: Number
+    maxGuestSize: {
+      type: Number,
+      default: 25
+    },
+    rooms: {
+      type: Number,
+      default: 3
+    }
   },
   bathrooms: Number,
   location: {
