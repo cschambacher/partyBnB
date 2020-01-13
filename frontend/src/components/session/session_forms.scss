@@ -22,6 +22,21 @@
     border: 1px solid #e4e4e4;
     background-color: #ffffff;
 }
+.form-login{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 434px;
+    height: 734px;
+    padding-left: 24px;
+    padding-right: 24px;
+    margin: 150px;
+    font-size: 18px;
+    color: rgb(72, 72, 72) ;
+    border: 1px solid #e4e4e4;
+    background-color: #ffffff;
+}
 .form-signup-header{
     display: flex;
     align-items: center;
@@ -30,6 +45,16 @@
     
     border-bottom: 2px solid #e4e4e4;
     margin-bottom: 15px;
+  
+}
+.form-login-header{
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    
+    // border-bottom: 2px solid #e4e4e4;
+    margin-bottom: 40px;
   
 }
 .form-signup-header-text{
@@ -57,9 +82,21 @@
     margin-left: 5px;
     height: 50px;
 }
+.form-login h2{
+    color: black;
+    font-size: 36px;
+    font-weight: 700;
+    justify-content: left;
+}
 .form h3{
     color: grey;
     font-size: 24px;
+    justify-content: left;
+}
+.login-h3{
+    display: inline-flex;
+    color: grey;
+    font-size: 18px;
     justify-content: left;
 }
 .form select{
@@ -106,4 +143,7 @@
     border-top: 1px solid #e4e4e4;
 }
 
+.blue{
+    color: #008489;
+}
 
