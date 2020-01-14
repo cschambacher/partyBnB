@@ -16,6 +16,26 @@
     flex-direction: column;
     padding-left: 10%;
 }
+.white-background-location h1{
+    font-size: 24px ;
+    font-weight: 800 ;
+    line-height: 1.25em ;
+    color: #484848 ;
+}
+.white-background-location p{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.28571em;
+    margin-bottom: 15px;
+    color: rgb(118, 118, 118);
+}
+.white-background-location label{
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.28571em;
+    margin-bottom: 15px;
+    // color: rgb(118, 118, 118);
+}
 
 .address-div {
     padding: 20px 8px;

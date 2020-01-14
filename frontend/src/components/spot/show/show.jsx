@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { fetchSpot } from '../../../util/spot_util';
+import { fetchSpot, deleteSpot } from '../../../util/spot_util';
 import "date-fns";
 import DateFnsUtils from "@date-io/date-fns";
 import {
@@ -9,8 +9,8 @@ import {
 } from "@material-ui/pickers";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from '@fortawesome/free-solid-svg-icons'
-
 import './show.scss';
+import { createBooking } from '../../../util/booking_util';
 import avatar from './avatar.png';
 
 class Show extends Component {
@@ -18,22 +18,66 @@ class Show extends Component {
         super(props);
         this.state = {
             spot: null,
+            startDate: new Date(),
+            endDate: new Date(),
+            maxGuestSize: 25
         }
 
     }
 
     componentDidMount() {
+        console.log("mount", this.props);
         fetchSpot(this.props.match.params.spotId).then(spot => {
             console.log(spot);
             this.setState({ spot: spot.data });
         });
     }
+    // removeBtn(currUser, spot) {
+    //     if (currUser === spot.user) {
+    //         return <button className="spot-list-btn-pin" onClick={() => deleteSpot(this.props.match.params.spotId)}>Remove</button>
+    //     } else {
+    //         return <span></span>;
+    //     }
+    // }
 
+    increase = arg => {
+        this.setState(prevState => (
+            { [arg]: prevState[arg] + 1 }
+        ))
+    }
+
+    decrease = arg => {
+        if (this.state[arg] > 0) {
+            this.setState(prevState => (
+                { [arg]: prevState[arg] - 1 }
+            ))
+        } else return;
+    }
+
+    handleBooking = () => {
+        const booking = {
+            startDate: this.state.startDate,
+            endDate: this.state.endDate,
+            spot: this.props.match.params.spotId,
+            price: this.state.spot.price.basePrice,
+            guests: this.state.maxGuestSize
+        }
+        createBooking(booking).then((createdBooking) => {
+            this.props.sendBooking(createdBooking);
+            this.props.history.push(`/booking/${createdBooking.data._id}`);
+        })
+        // this.props.history.push()
+        console.log("handle booking");
+    }
     render() {
         if (!this.state.spot) return null;
         const description = Object.values(this.state.spot.description);
         const price = this.state.spot.price.basePrice;
         const rating = this.props.rating;
+        const {currUser} = this.props;
+        console.log(currUser);
+        console.log(this.state.spot);
+
         return (
 
             <div className="show">
@@ -49,8 +93,14 @@ class Show extends Component {
                         <li>Overview</li>
                         <li>Reviews</li>
                         <li>The Host</li>
-                        <li>Location</li>
-                        <li>Policies</li>
+                        <li>Edit</li>
+                        <li><button className="spot-list-btn-pin" 
+                            onClick={() => deleteSpot(this.props.match.params.spotId)
+                            .then(spot => {
+                            console.log("spot deleted");
+                            this.props.history.push(`/dashboard`);
+                        }).catch(err => console.log(err))}>Remove</button></li>
+                        {/* <li>{this.removeBtn(currUser, this.state.spot)}</li> */}
                     </ul>
                 </div>
                 <div className="show-detail">
@@ -101,8 +151,8 @@ class Show extends Component {
                                     margin="normal"
                                     id="start-date-picker-inline"
                                     label="Start-Date"
-                                    value={this.state.date}
-                                    onChange={date => this.setState({ date })}
+                                    value={this.state.startDate}
+                                    onChange={startDate => this.setState({ startDate })}
                                     KeyboardButtonProps={{
                                         "aria-label": "change date"
                                     }}
@@ -117,14 +167,31 @@ class Show extends Component {
                                     margin="normal"
                                     id="end-date-picker-inline"
                                     label="End-Date"
-                                    value={this.state.date}
-                                    onChange={date => this.setState({ date })}
+                                    value={this.state.endDate}
+                                    onChange={endDate => this.setState({ endDate })}
                                     KeyboardButtonProps={{
                                         "aria-label": "change date"
                                     }}
                                 />
                             </MuiPickersUtilsProvider>
-                            <button className="search-btn">Reserve</button>
+                            <div className="show-guest">
+                                <p className="capacity-label">Guests</p>
+                                <p
+                                    className={`form-decrement ${this.state.maxGuestSize === 0 &&
+                                        "dull"}`}
+                                    onClick={() => this.decrease("maxGuestSize")}
+                                >
+                                    -
+                </p>
+                                <p className="value">{this.state.maxGuestSize}</p>
+                                <p
+                                    onClick={() => this.increase("maxGuestSize")}
+                                    className="form-increment"
+                                >
+                                    +
+                </p>
+                            </div>
+                            <button onClick={this.handleBooking} className="search-btn">Reserve</button>
                             <small>You won’t be charged yet</small>
                         </div>
                     </div>
@@ -133,6 +200,7 @@ class Show extends Component {
                 <div className="show-footer">
 
                 </div>
+                <div className="empty-height"></div>
             </div>
         );
     }

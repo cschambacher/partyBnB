@@ -67,7 +67,7 @@ class SignupForm extends React.Component {
 
                     <div className="form">
                         <div className="form-signup-header">
-                            <h3>Sign up with Facebook or Google</h3>
+                            <h3>Sign up with <span className="blue">Facebook</span> or <span className="blue">Google</span></h3>
                     
                         </div>
             
@@ -164,8 +164,8 @@ class SignupForm extends React.Component {
                             <input type="checkbox" /><label>I don’t want to receive marketing messages from PartyBnB.</label>
                         </div>
                         <div className="form-footer">
-                            <h3>Already have an Airbnb account?</h3>
-                            <Link to={'/login'}>Login</Link>
+                            <h3>Already have an Airbnb account?
+                            <span className="blue"><Link to={'/login'}>Login</Link></span></h3>
                         </div>
                     </div>
                     

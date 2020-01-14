@@ -1,12 +1,16 @@
 
 
 .add-photos-to-listing{
+    
+    display: flex;
+    flex-direction: column;
     width: 1232px;
     height: 805px;
     padding-top: 71px !important;
 }
 
 .upload-container{
+    
     max-width: 912px !important;
     margin: 0 auto !important;
     /* position: relative !important; */
@@ -15,6 +19,7 @@
 }
 
 .upload-description{
+   
     background-color: white !important;
     padding-bottom: 102px !important;
     width: 547px;
@@ -22,6 +27,7 @@
 }
 
 .upload-side {
+    
     font-size: 19px !important;
     padding: 30px 30px 16px 30px !important;
     width: 487px;
@@ -37,6 +43,7 @@
 
 .add-photos-captions{
     margin-right: 20px;
+    margin-bottom: 20px;
 }
 
 .add-photos-captions{
@@ -46,15 +53,21 @@
 
 .add-photos-reason{
     margin-top: 8px;
-    margin-bottom: 24px;
+    margin-bottom: 50px;
     width: 487px;
     height: 44px;
+    p{
+    
+    font-size: 20px;
+    margin-bottom: 20px;
+    }
 }
 
 .upload-box{
     width: 517px;
     height: 400px;
     box-sizing: border-box;
+    
 }
 
 .upload-form {
@@ -68,15 +81,15 @@
 }
 
 .inner-upload-padding{
-    border: 2px dashed #bbb !important;
-    border-radius: 6px !important;
-    height: 400px !important;
-    cursor: pointer !important;
-    position: relative !important;
-    margin: 0 !important;
-    padding: 20px !important;
-    width: 100% !important;
-    display: table !important;
+    border: 2px dashed #bbb;
+    border-radius: 6px;
+    height: 400px;
+    cursor: pointer;
+    position: relative;
+    margin: 0;
+    padding: 20px;
+    width: 100%;
+    display: table;
 }
 
 .upload-button-container-with-padding{
@@ -88,18 +101,19 @@
 }
 
 .upload-button-container{
-    float: none !important;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    text-align: center !important;
-    pointer-events: none !important;
+    float: none;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    pointer-events: none;
     width: 390px;
     height: 98px;
 }
 
-.upload-photos-button{
-    
-}
+
 .upload-photos-file{
-    border: 2px solid red;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
