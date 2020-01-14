@@ -77,7 +77,7 @@ export default class Profile extends React.Component {
 
                     </div>
                 </div>
-                <div className='profile-header'>
+                <div className='profile-spots'>
                     <h1>Party spots</h1>
 
                     {this.location(spots)}
