@@ -43,6 +43,12 @@
 }
 
 .per-night{
-    display: contents;
+    display: flex;
     font-weight: 300;
+}
+
+.distance {
+    margin-left: 1.5em;
+    color: red;
+    font-family: sans-serif;
 }

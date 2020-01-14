@@ -13,9 +13,18 @@ class Thumbnail extends React.Component {
     render(){
       // console.log(this.props.id);
         return (
-          <div className="thumbnail" onClick={() => this.props.history.push(`/spot/show/${this.props.id}`)}>
+          <div
+            className="thumbnail"
+            onClick={() =>
+              this.props.history.push(`/spot/show/${this.props.id}`)
+            }
+          >
             <img className="thumbnail-image" src={this.props.imageUrl} alt="" />
-            <p className="thumbnail-location">{this.props.state}</p>
+            <p className="thumbnail-location">
+              {this.props.city
+                ? `${this.props.city}, ${this.props.state}`
+                : `${this.props.state}`}
+            </p>
             <div className="name">
               {this.props.title}
               <div className="rating">
@@ -25,10 +34,20 @@ class Thumbnail extends React.Component {
               </div>
             </div>
 
-            <div className="description">{this.props.description} Description</div>
+            <div className="description">
+              {this.props.description} Description
+            </div>
 
-            <div className="price">${this.props.price}
-                <div className="per-night"> / night</div>
+            <div className="price">
+              ${this.props.price}
+              <div className="per-night"> / night</div>
+              {this.props.distance ? (
+                <div className="distance">
+                  <p className="distance-p">{`${this.props.distance} miles away`}</p>
+                </div>
+              ) : (
+                <div></div>
+              )}
             </div>
           </div>
         );

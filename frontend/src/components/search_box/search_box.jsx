@@ -48,7 +48,7 @@ class SearchBox extends React.Component {
         this.setState({ lat: latLng.lat, lng: latLng.lng });
       })
       .catch(error => console.error("Error", error));
-      const state = address.split(",")[1];
+      const state = address.split(",")[1].trim();
       console.log("state", state);
     this.setState({address, state});
   };
@@ -94,7 +94,6 @@ class SearchBox extends React.Component {
               <div className="autocomplete-dropdown-container">
                 {loading && <div>Loading...</div>}
                 {suggestions.map(suggestion => {
-                  debugger;
                   const className = suggestion.active
                     ? "suggestion-item--active row"
                     : "suggestion-item row";
@@ -155,7 +154,7 @@ class SearchBox extends React.Component {
         </div>
         <button onClick={() => {
           if (this.state.address.length > 0){
-            this.props.history.push(`/search/${this.state.state}/${this.state.maxGuestSize}`)
+            this.props.history.push(`/search/${this.state.lat}/${this.state.lng}`)
           }
         }} className="search-btn">Search</button>
       </div>
