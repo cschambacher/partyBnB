@@ -32,6 +32,7 @@ class Dashboard extends React.Component {
                       imageUrl={spot.imageUrl}
                       id={spot._id}
                       state={spot.location.state}
+                      city={spot.location.city}
                       />
                   ))  
                 }
