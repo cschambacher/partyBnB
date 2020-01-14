@@ -210,7 +210,7 @@ class Show extends Component {
                 </p>
                             </div>
                             <button onClick={this.handleBooking} className="search-btn">Reserve</button>
-                            <small>You won’t be charged yet</small>
+                            <small className="search-btn-caption">You won’t be charged yet</small>
                         </div>
                     </div>
                 </div>
