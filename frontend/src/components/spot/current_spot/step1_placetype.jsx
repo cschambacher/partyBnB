@@ -51,15 +51,15 @@ class PlaceType extends React.Component {
                         <div className="choice">
                             <input className="radio" type="radio" 
                                
-                                value={true}
-                                onChange={(e) => this.setState({ dedicatedGuestSpace: e.currentTarget.value })}
+                                // value={true}
+                                onChange={(e) => this.setState({ dedicatedGuestSpace: true })}
                                 checked={this.state.dedicatedGuestSpace === true} />
                             <label >Yes, it’s primarily set up for guests</label>
                         </div>
                         <div className="choice">
                             <input className="radio" type="radio" 
-                                value={false}
-                                onChange={(e) => this.setState({ dedicatedGuestSpace: e.currentTarget.value })}
+                                // value={false}
+                                onChange={(e) => this.setState({ dedicatedGuestSpace: false })}
                                 checked={this.state.dedicatedGuestSpace === false} />
                             <label>No, I keep my personal belongings here</label>
                         </div>
@@ -99,14 +99,14 @@ class PlaceType extends React.Component {
                         <h3>Are you listing on Airbnb as part of a company?</h3>
                         <div className="choice">
                             <input className="radio" type="radio" 
-                                value={true}
-                                onChange={(e) => this.setState({ listingForOtherCompany: e.currentTarget.value })}
+                                // value={true}
+                                onChange={(e) => this.setState({ listingForOtherCompany: true })}
                                 checked={this.state.listingForOtherCompany === true} />
                             <label>Yes, I work for or run a business</label>
                         </div>
                         <div className="choice">
                             <input className="radio" type="radio" value={false}
-                                onChange={(e) => this.setState({ listingForOtherCompany: e.currentTarget.value })}
+                                onChange={(e) => this.setState({ listingForOtherCompany: false })}
                                 checked={this.state.listingForOtherCompany === false} />
                             <label>No, that doesn’t sound like me</label>
                             <div className="choice">
