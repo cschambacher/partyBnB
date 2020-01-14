@@ -1,0 +1,45 @@
+.show-review {
+    padding-left: 20px;
+}
+
+.reviews-caption{
+    padding-top: 40px;
+    display: block;
+    margin-block-start: 1.33em;
+    margin-block-end: 1.33em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+.reviewer-name{
+    padding-left: 4px;
+    padding-bottom: 9px;
+    font-weight: 500;
+}
+
+.review-star-icon{
+    display: flex;
+    color: #008489;
+    height: 0.75em;
+    padding: 2px;
+}
+
+.rating-container {
+    display: flex;
+}
+
+.reviewer-comment {
+    padding-top: 10px;
+    padding-bottom: 18px;
+    font-weight: 300;
+    margin-left: 5px
+
+}
+
+.review-comment-end-line {
+    border-bottom-width: 1px !important;
+    border-bottom-style: solid !important;
+    border-bottom-color: var(--color-divider, #EBEBEB) !important;
+    margin-bottom: 21px;
+}
