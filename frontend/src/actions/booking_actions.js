@@ -9,3 +9,7 @@ export const receiveBooking = (booking) => ({
 export const createBooking = booking => dispatch => (
     bookingAPIUtil.createBooking(booking).then(dispatch(receiveBooking(booking.data)))
 );
+
+export const fetchBooking = bookingId => dispatch => (
+    bookingAPIUtil.fetchBooking(bookingId).then(booking => dispatch(receiveBooking(booking)))
+)
