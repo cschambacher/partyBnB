@@ -1,4 +1,9 @@
 import React from 'react'
+import {withRouter} from 'react-router-dom'
+import "./review.scss"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
+
 class Review extends React.Component {
 
     constructor(props) {
@@ -13,18 +18,30 @@ class Review extends React.Component {
     //  }
 
     render() {
-        console.log(this.props.reviews)
         const {reviews} = this.props
+        console.log(reviews)
         return (
             <div>
-                <h1>this is for my reviews</h1>
+                <h4 className="reviews-caption">Reviews</h4>
 
                { Object.values(reviews).map((value) =>{
-            return   <div>  {value.user}, 
-                            {value.rating}, 
-                            {value.comment},
-                            {value.spot}
-                      </div>
+            return (
+              <div>
+                <div>
+                  <div className="profile-icon"></div>
+                  <div className="reviewer-name">{value.user}</div>
+                    <div className="rating-container">
+                        <FontAwesomeIcon className="review-star-icon" icon={faStar} />
+                        <FontAwesomeIcon className="review-star-icon" icon={faStar} />
+                        <FontAwesomeIcon className="review-star-icon" icon={faStar} />
+                        <FontAwesomeIcon className="review-star-icon" icon={faStar} />
+                        <FontAwesomeIcon className="review-star-icon" icon={faStar} />
+                    </div> 
+                </div>
+                <div className="reviewer-comment">{value.comment}</div>
+                <div className="review-comment-end-line"></div>
+              </div>
+            );
                } ) }
             </div>
             
@@ -33,7 +50,7 @@ class Review extends React.Component {
     }
 }
 
-export default Review;
+export default withRouter(Review);
 
 
 {/* <div className="guest-review-page">

@@ -26,7 +26,7 @@ const initalState = {
     },
 
     5: {
-        user: 'Spongebob',
+        user: 'Tom',
         spot: "best hotel",
         rating: 4,
         comment: "Lorem ipsum dolor sit amet, an mel detracto vulputate, choro consectetuer eu mea. Quo minim iriure cu. Vel salutandi gubergren ad, in blandit gloriatur eos. Sea et quot magna. Eum fierent albucius officiis no, et virtute epicuri vis. Has saperet consectetuer ut, eu deleniti verterem temporibus cum, id eum rebum comprehensam."
@@ -34,7 +34,7 @@ const initalState = {
     },
 
     6: {
-        user: 'Squidward',
+        user: 'Bruno',
         spot: "best hotel",
         rating: 4,
         comment: "Lorem ipsum dolor sit amet, an mel detracto vulputate, choro consectetuer eu mea. Quo minim iriure cu. Vel salutandi gubergren ad, in blandit gloriatur eos. Sea et quot magna. Eum fierent albucius officiis no, et virtute epicuri vis. Has saperet consectetuer ut, eu deleniti verterem temporibus cum, id eum rebum comprehensam."
@@ -42,14 +42,14 @@ const initalState = {
     },
 
     7: {
-        user: 'Bye',
+        user: 'Peter',
         spot: "best hotel",
         rating: 4,
         comment: "Lorem ipsum dolor sit amet, an mel detracto vulputate, choro consectetuer eu mea. Quo minim iriure cu. Vel salutandi gubergren ad, in blandit gloriatur eos. Sea et quot magna. Eum fierent albucius officiis no, et virtute epicuri vis. Has saperet consectetuer ut, eu deleniti verterem temporibus cum, id eum rebum comprehensam."
     },
 
     8: {
-        user: 'HI',
+        user: 'Jeremy',
         spot: "best hotel",
         rating: 4,
         comment: "Lorem ipsum dolor sit amet, an mel detracto vulputate, choro consectetuer eu mea. Quo minim iriure cu. Vel salutandi gubergren ad, in blandit gloriatur eos. Sea et quot magna. Eum fierent albucius officiis no, et virtute epicuri vis. Has saperet consectetuer ut, eu deleniti verterem temporibus cum, id eum rebum comprehensam."
