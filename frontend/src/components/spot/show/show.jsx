@@ -49,7 +49,7 @@ class Show extends Component {
 
     removeBtn(user, spot) {
         console.log("is it currUser?", spot.user === user.id);
-        if (spot.user === user.id){
+        if (spot.user._id === user.id){
             return <li><button className="spot-list-btn-pin"
                 onClick={() => deleteSpot(this.props.match.params.spotId)
                     .then(spot => {
@@ -123,14 +123,14 @@ class Show extends Component {
                             </div>
                             <div className="show-detail-host">
                                 <img src={avatar} className="user-avatar" alt="avatar" />
-                                <div>{this.state.spot.user.firstName}</div>
+                                <p>{this.state.spot.user.firstName}</p>
                             </div>
                             
                         </div>
                         <div className="show-detail-capacity">
-                            <div>Capacity</div>
-                            <div>Guests: {this.state.spot.capacity.maxGuestSize}</div>
-                            <div>Rooms: {this.state.spot.capacity.rooms}</div>
+                            <div className="capacity">Capacity</div>
+                            <div className="capacity">Guests: {this.state.spot.capacity.maxGuestSize}</div>
+                            <div className="capacity">Rooms: {this.state.spot.capacity.rooms}</div>
                         </div>
                         <div className="show-detail-overview">
                             <h4>Entire home</h4>
