@@ -17,8 +17,13 @@ import SpotLocation from './spot/spot_location/spot_location';
 import SearchIndex from './search_index/search_index';
 import PlaceType from './spot/current_spot/step1_placetype';
 import description from './spot/description/step4_description';
+<<<<<<< HEAD
+import ReviewIndexContainer from './review/review_index_container'
+
+=======
 import BookingShowContainer from './booking/booking_show/booking_show_container';
 import ShowContainer from './spot/show/show_container';
+>>>>>>> master
 const App = () => (
   <div>
     <NavBarContainer />
@@ -41,6 +46,7 @@ const App = () => (
       <ProtectedRoute exact path="/placetype/:spotId" component={PlaceType} />
       <ProtectedRoute exact path="/upload/:spotId" component={upload} />
       <ProtectedRoute exact path="/description/:spotId" component={description} />
+      <ProtectedRoute exact path="/reviews/:spotId" component={ReviewIndexContainer}/>
       <ProtectedRoute exact path="/booking/:bookingId" component={BookingShowContainer} />
     </Switch>
   </div>
