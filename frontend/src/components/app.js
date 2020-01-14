@@ -18,7 +18,11 @@ import SearchIndex from './search_index/search_index';
 import PlaceType from './spot/current_spot/step1_placetype';
 import description from './spot/description/step4_description';
 import ReviewIndexContainer from './review/review_index_container'
+<<<<<<< HEAD
 
+=======
+import Profile from './profile/profile_container';
+>>>>>>> master
 import BookingShowContainer from './booking/booking_show/booking_show_container';
 import ShowContainer from './spot/show/show_container';
 const App = () => (
@@ -35,8 +39,9 @@ const App = () => (
       {/* <Route exact path="/spot/show/:spotId" component={Show} /> */}
       <Route exact path="/spot/show/:spotId" component={ShowContainer} />
       <ProtectedRoute exact path="/location/:spotId" component={SpotLocation} />
+      <ProtectedRoute exact path="/profile" component={Profile} />
 
-      <Route exact path="/search/:state/:guests" component={SearchIndex} />
+      <Route exact path="/search/:lat/:lng" component={SearchIndex} />
 
 
 

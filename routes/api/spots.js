@@ -12,6 +12,13 @@ router.get("/", (req, res) => {
     .then(spots => res.json(spots))
     .catch(err => res.status(404).json({ nospotsfound: "No spots found" }));
 });
+router.get("/all", (req, res) => {
+  Spot.find()
+    .populate('user', 'email')
+    .sort({ created_at: -1 })
+    .then(spots => res.json(spots))
+    .catch(err => res.status(404).json({ nospotsfound: "No spots found" }));
+});
 
 router.get("/:id", (req, res) => {
   Spot.findById(req.params.id)
