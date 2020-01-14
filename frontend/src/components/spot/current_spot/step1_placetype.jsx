@@ -115,8 +115,8 @@ class PlaceType extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <div className="next-back">
-                        <div className="row">
+                    <div id="next-back">
+                        <div className="dis-row">
                             <span className="arrow-left"></span>
                             <p onClick={() => this.props.history.goBack()}>Back</p>
                         </div>
