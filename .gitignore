@@ -1,5 +1,4 @@
 # /config/keys.js
-/config/keys_prod.js
 /config/keys_dev.js
 /config/geocode_key.js
 /node_modules
