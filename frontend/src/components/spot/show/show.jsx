@@ -123,14 +123,14 @@ class Show extends Component {
                             </div>
                             <div className="show-detail-host">
                                 <img src={avatar} className="user-avatar" alt="avatar" />
-                                <div>Olga</div>
+                                <div>{this.state.spot.user.firstName}</div>
                             </div>
                             
                         </div>
                         <div className="show-detail-capacity">
                             <div>Capacity</div>
                             <div>Guests: {this.state.spot.capacity.maxGuestSize}</div>
-                            <p>Rooms: {this.state.spot.capacity.rooms}</p>
+                            <div>Rooms: {this.state.spot.capacity.rooms}</div>
                         </div>
                         <div className="show-detail-overview">
                             <h4>Entire home</h4>

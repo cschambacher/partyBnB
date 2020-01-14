@@ -12,3 +12,6 @@ export const receiveProfileUser = currentUser => {
 }
 export const fetchCurrentUser = () => dispatch =>
     APIUtil.getCurrentUser().then(user => dispatch(receiveProfileUser(user)));
+
+export const fetchUser = (userId) => dispatch =>
+    APIUtil.getUser(userId).then(user => dispatch(receiveProfileUser(user)));
