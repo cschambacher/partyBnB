@@ -22,7 +22,7 @@ class Show extends Component {
             endDate: new Date(),
             maxGuestSize: 25
         }
-
+        this.removeBtn = this.removeBtn.bind(this);
     }
 
     componentDidMount() {
@@ -32,13 +32,6 @@ class Show extends Component {
             this.setState({ spot: spot.data });
         });
     }
-    // removeBtn(currUser, spot) {
-    //     if (currUser === spot.user) {
-    //         return <button className="spot-list-btn-pin" onClick={() => deleteSpot(this.props.match.params.spotId)}>Remove</button>
-    //     } else {
-    //         return <span></span>;
-    //     }
-    // }
 
     increase = arg => {
         this.setState(prevState => (
@@ -52,6 +45,20 @@ class Show extends Component {
                 { [arg]: prevState[arg] - 1 }
             ))
         } else return;
+    }
+
+    removeBtn(user, spot) {
+        console.log("is it currUser?", spot.user === user.id);
+        if (spot.user === user.id){
+            return <li><button className="spot-list-btn-pin"
+                onClick={() => deleteSpot(this.props.match.params.spotId)
+                    .then(spot => {
+                        console.log("spot deleted");
+                        this.props.history.push(`/dashboard`);
+                    }).catch(err => console.log(err))}>Remove</button></li>        
+        } else {
+            return <li></li>
+        }
     }
 
     handleBooking = () => {
@@ -75,7 +82,7 @@ class Show extends Component {
         const price = this.state.spot.price.basePrice;
         const rating = this.props.rating;
         const {currUser} = this.props;
-        console.log(currUser);
+        console.log("currUser", currUser);
         console.log(this.state.spot);
 
         return (
@@ -94,12 +101,13 @@ class Show extends Component {
                         <li>Reviews</li>
                         <li>The Host</li>
                         <li>Edit</li>
-                        <li><button className="spot-list-btn-pin" 
+                        {this.removeBtn(currUser, this.state.spot)}
+                        {/* <li><button className="spot-list-btn-pin" 
                             onClick={() => deleteSpot(this.props.match.params.spotId)
                             .then(spot => {
                             console.log("spot deleted");
                             this.props.history.push(`/dashboard`);
-                        }).catch(err => console.log(err))}>Remove</button></li>
+                        }).catch(err => console.log(err))}>Remove</button></li> */}
                         {/* <li>{this.removeBtn(currUser, this.state.spot)}</li> */}
                     </ul>
                 </div>
@@ -108,11 +116,21 @@ class Show extends Component {
 
                         <h1>{this.state.spot.title}</h1>
                         <div className="show-detail-title">
-                            <div className="show-detail-city">{this.state.spot.location.city}</div>
+                            <div className="show-detail-city">
+                                <p> {this.state.spot.location.city}</p>
+                                
+
+                            </div>
                             <div className="show-detail-host">
                                 <img src={avatar} className="user-avatar" alt="avatar" />
                                 <div>Olga</div>
                             </div>
+                            
+                        </div>
+                        <div className="show-detail-capacity">
+                            <div>Capacity</div>
+                            <div>Guests: {this.state.spot.capacity.maxGuestSize}</div>
+                            <p>Rooms: {this.state.spot.capacity.rooms}</p>
                         </div>
                         <div className="show-detail-overview">
                             <h4>Entire home</h4>
