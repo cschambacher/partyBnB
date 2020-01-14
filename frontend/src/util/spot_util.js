@@ -16,9 +16,8 @@ export const stateGuestSearch = (state, guests) => (
 export const deleteSpot = (spotId) => (
     axios.delete(`/api/spots/${spotId}`)
 )
+ 
+export const locationSearch = (lat, lon, distance=100) => (
+    axios.get(`api/search/location/?lat=${lat}&lon=${lon}&distance=${distance}`)
+)
 
-// export const selectUserSpots = (state, user) => {
-//     console.log(state);
-//     // const userSpots = Object.values(state.entities.spots);
-//     // return userSpots.filter(spot => spot.user === user) 
-// }

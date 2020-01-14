@@ -37,7 +37,7 @@ const App = () => (
       <ProtectedRoute exact path="/location/:spotId" component={SpotLocation} />
       <ProtectedRoute exact path="/profile" component={Profile} />
 
-      <Route exact path="/search/:state/:guests" component={SearchIndex} />
+      <Route exact path="/search/:lat/:lng" component={SearchIndex} />
 
 
 
