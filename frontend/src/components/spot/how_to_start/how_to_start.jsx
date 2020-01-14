@@ -41,6 +41,7 @@ class HowToStart extends React.Component {
                   </div>
                 </div>
               </fieldset>
+              <div className="some-empty-height"></div>
               <button disabled={this.state.selected.length === 0} className={`grn-btn ${this.state.selected.length > 0 && "sharpen"}`} onClick={this.handleClick}>
                 Next
               </button>
