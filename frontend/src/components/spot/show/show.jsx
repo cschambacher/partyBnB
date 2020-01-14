@@ -64,7 +64,7 @@ class Show extends Component {
         }
         createBooking(booking).then((createdBooking) => {
             this.props.sendBooking(createdBooking);
-            this.props.history.push(`/booking/${createdBooking._id}`);
+            this.props.history.push(`/booking/${createdBooking.data._id}`);
         })
         // this.props.history.push()
         console.log("handle booking");
