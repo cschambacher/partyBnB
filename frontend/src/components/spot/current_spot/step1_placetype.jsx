@@ -121,7 +121,9 @@ class PlaceType extends React.Component {
                             <p onClick={() => this.props.history.goBack()}>Back</p>
                         </div>
                         <button
-                            className="next-btn"
+                            className={`grn-btn ${this.state.placeType !== null && "sharpen"}`}
+                            disabled={this.state.placeType === null}
+                            
                             onClick={() => {
                                 this.props.updateSpot(this.props.match.params.spotId, {
                                     placeType: this.state,

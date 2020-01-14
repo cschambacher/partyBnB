@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { updateSpot, fetchSpot } from "../../../actions/spot_actions";
+import './description.scss';
 // import { createCurrentSpot } from '../../../util/spot_form_utils';
 // import { receiveCurrentSpot } from '../../../actions/spot_actions';
 
@@ -8,10 +9,10 @@ class Description extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            title: " ",
-            description: " ",
+            title: "",
+            description: "",
             // propertyType: "",
-            basePrice: "450",
+            basePrice: "",
             rating: "4",
 
         }
@@ -27,71 +28,77 @@ class Description extends React.Component {
     render() {
         // console.log(spot);
         return (
-            <div>
-                <div className="property-price">
-                    <div>Name of your party spot:</div>
-                    <div>
-                        <input
-                            type='text'
-                            value={this.state.title}
-                            placeholder="Name"
-                            onChange={e => this.setState({ title: e.currentTarget.value })}
-                        />
+            <div className="description-container">
+                <div className="description-form">
+                    <h1>Describe your party spot</h1>
+                    <div className="property-title">
+                        <h3>Name of your party spot:</h3>
+                        <p>Give your spot a cool name that sounds like a party</p>
+                        <div>
+                            <input
+                                type='text'
+                                value={this.state.title}
+                                placeholder={this.state.title}
+                                onChange={e => this.setState({ title: e.currentTarget.value })}
+                            />
+                        </div>
                     </div>
-                </div>
-                <div>What kind of spot are you listing?</div>
-                <div className="property-descritpion">
-                    <div>Describe your property</div>
-                    <div>
-                        <textarea
-                            cols="30"
-                            rows="1"
-                            value={this.state.description}
-                            placeholder="Tell everyone about your spot"
-                            onChange={e => this.setState({ description : e.currentTarget.value })}
-                        />
+                
+                    <div className="property-description">
+                        <h3>What kind of spot are you listing?</h3>
+                        <p>Describe your property</p>
+                        <div>
+                            <textarea
+                                cols="30"
+                                rows="1"
+                                value={this.state.description}
+                                placeholder={this.state.description}
+                                onChange={e => this.setState({ description : e.currentTarget.value })}
+                            />
+                        </div>
                     </div>
-                </div>
 
-                <div className="property-price">
-                    <div>Price</div>
-                    <div>
-                        <input
-                            type='text'
-                            value={this.state.price}
-                            placeholder="price per night"
-                            onChange={e => this.setState({ basePrice: e.currentTarget.value })}
-                        />
+                    <div className="property-price">
+                        <h3>Price</h3>
+                        <p>Price per night</p>
+                        <div className="property-price-input">
+                            <input
+                                type='text'
+                                value={this.state.price}
+                                placeholder={this.state.basePrice}
+                                onChange={e => this.setState({ basePrice: e.currentTarget.value })}
+                            /><p>$/night</p>
+                        </div>
                     </div>
-                </div>
-                <div className="next-back">
-                    <div className="row">
-                        <span className="arrow-left"></span>
-                        <p onClick={() => this.props.history.goBack()}>Back</p>
+                    <div className="next-back">
+                        <div className="row">
+                            <span className="arrow-left"></span>
+                            <p onClick={() => this.props.history.goBack()}>Back</p>
+                        </div>
+                        <button
+                            className={`grn-btn ${(this.state.title !== "" && this.state.description !== "" && this.state.basePrice !== "") && "sharpen"}`}
+                            onClick={() => {
+                                this.props.updateSpot(this.props.match.params.spotId, {
+                                    description: {
+                                        description: this.state.description
+                                    },
+                                    price: {
+                                        basePrice: this.state.basePrice,
+                            
+                                    },
+                                    title: this.state.title,
+                                    rating: this.state.rating
+                                }).then(spot => {
+                                    console.log(spot);
+                                    // this.props.receiveCurrentSpot(spot.data);
+                                    this.props.history.push(`/capacity/${this.props.match.params.spotId}`);
+                                }).catch(err => console.log(err));
+                                console.log("pressed");
+                            }}
+                        >
+                            Next
+                    </button>
                     </div>
-                    <button
-                        className="next-btn"
-                        onClick={() => {
-                            this.props.updateSpot(this.props.match.params.spotId, {
-                                description: {
-                                    description: this.state.description
-                                },
-                                price: {
-                                    basePrice: this.state.basePrice,
-                        
-                                },
-                                title: this.state.title,
-                                rating: this.state.rating
-                            }).then(spot => {
-                                console.log(spot);
-                                // this.props.receiveCurrentSpot(spot.data);
-                                this.props.history.push(`/capacity/${this.props.match.params.spotId}`);
-                            }).catch(err => console.log(err));
-                            console.log("pressed");
-                        }}
-                    >
-                        Next
-                </button>
                 </div>
             </div>
         );

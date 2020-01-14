@@ -32,12 +32,12 @@ class Capacity extends React.Component {
         return (
           <div className="capacity">
             <div className="white-background">
-              <p className="form-header">How many guests can your place</p>
-              <p className="form-header">accomodate?</p>
-              <p className="form-description">
+              <h1 className="form-header">How many guests can your place</h1>
+              <h1 className="form-header">accomodate?</h1>
+              <h3 className="form-description">
                 Check that you have enough rooms to accommodate all your guests
                 comfortably.
-              </p>
+              </h3>
               <div className="space-between">
                 <p className="capacity-label">Guests</p>
                 <p
@@ -55,7 +55,7 @@ class Capacity extends React.Component {
                   +
                 </p>
               </div>
-              <p className="form-question">How many rooms can guests use?</p>
+              <h3 className="form-question">How many rooms can guests use?</h3>
               <div className="space-between">
                 <p className="capacity-label">Rooms</p>
                 <p
