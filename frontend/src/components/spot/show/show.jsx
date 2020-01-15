@@ -140,12 +140,20 @@ class Show extends Component {
                 <h1>{this.state.spot.title}</h1>
                 <div className="show-detail-title">
                   <div className="show-detail-city">
-                    {this.state.spot.location.city}
+                    <p> {this.state.spot.location.city}</p>
+
+
                   </div>
                   <div className="show-detail-host">
                     <img src={avatar} className="user-avatar" alt="avatar" />
-                    <div>Olga</div>
+                    <p>{this.state.spot.user.firstName}</p>
                   </div>
+
+                </div>
+                <div className="show-detail-capacity">
+                  <div className="capacity">Capacity</div>
+                  <div className="capacity">Guests: {this.state.spot.capacity.maxGuestSize}</div>
+                  <div className="capacity">Rooms: {this.state.spot.capacity.rooms}</div>
                 </div>
                 <div className="show-detail-overview">
                   <h4>Entire home</h4>
@@ -240,7 +248,7 @@ class Show extends Component {
                   <button onClick={this.handleBooking} className="search-btn">
                     Reserve
                   </button>
-                  <small>You won’t be charged yet</small>
+                  <small className="search-btn-caption">You won’t be charged yet</small>
                 </div>
               </div>
             </div>
