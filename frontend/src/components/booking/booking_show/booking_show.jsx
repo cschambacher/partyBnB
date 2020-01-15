@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import "./booking_show.scss";
 import userIcon from './user-icon.svg';
 export default class BookingShow extends Component {
@@ -21,7 +22,7 @@ export default class BookingShow extends Component {
                                     <p className="title-bold">Guests</p>
                                     <p>{booking.guests}</p>
                                 </div>
-                                <button className="profile-btn">View Profile</button>
+                                <button className="profile-btn"><Link to={'/profile'}>View Profile</Link></button>
                             </div>
                             <div className="booking-divider">
 

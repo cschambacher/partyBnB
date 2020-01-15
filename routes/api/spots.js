@@ -22,6 +22,7 @@ router.get("/all", (req, res) => {
 
 router.get("/:id", (req, res) => {
   Spot.findById(req.params.id)
+    .populate('user', 'firstName')
     .then(spot => res.json(spot))
     .catch(err =>
       res.status(404).json({ nospotsfound: "No spot found with that ID" })
