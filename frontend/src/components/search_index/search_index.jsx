@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import frustrated from "./frustrated.png";
 import Thumbnail from '../thumbnail/thumbnail';
-import { stateGuestSearch, locationSearch } from '../../util/spot_util';
+import { connect } from 'react-redux';
+import { stateGuestSearch, locationSearch,} from '../../util/spot_util';
+import { searchSpots } from '../../actions/spot_actions';
 import "./search_index.scss";
-export default class SearchIndex extends Component {
+export class SearchIndex extends Component {
                  constructor(props) {
                    super(props);
                    this.state = {
@@ -16,9 +18,9 @@ export default class SearchIndex extends Component {
                    const lat = this.props.match.params.lat;
                    const lon = this.props.match.params.lng;
                    this.setState({ loading: true });
-                   locationSearch(lat, lon)
-                     .then(spots => {
-                       this.setState({ loading: false, spots: spots.data });
+                   this.props.searchSpots(lat, lon)
+                     .then(() => {
+                       this.setState({ loading: false});
                      })
                      .catch(e => this.setState({ loading: false }));
 
@@ -28,20 +30,20 @@ export default class SearchIndex extends Component {
                  }
                  
                  render() {
-                   if (this.state.spots.length > 0) {
-                     console.log("spots", this.state.spots);
+                   if (this.props.results.length > 0) {
+                     console.log("spots", this.props.results);
                      return (
                        <div className="thumb-display">
-                         {this.state.spots.map(spot => (
+                         {this.props.results.map(spot => (
                            <Thumbnail
                              title={spot.title}
-                             description={spot.description.description}
-                             price={spot.price.basePrice.toString()}
+                             description={spot.description ? spot.description.description : ""}
+                             price={spot.price ? spot.price.basePrice.toString(): ""}
                              key={spot.id}
-                             imageUrl={spot.imageUrl}
+                             imageUrl={spot.imageUrl ? spot.imageUrl : ""}
                              id={spot._id}
-                             state={spot.location.state}
-                             city={spot.location.city}
+                             state={spot.location ? spot.location.state : ""}
+                             city={spot.location ? spot.location.city : ""}
                              distance={Math.ceil(spot.dist.calculated)}
                            />
                          ))}
@@ -49,7 +51,7 @@ export default class SearchIndex extends Component {
                      );
                    } else if (
                      !this.state.loading &&
-                     this.state.spots.length === 0
+                     this.props.results.length === 0
                    ) {
                      return (
                        <div className="no-spots-container">
@@ -71,3 +73,14 @@ export default class SearchIndex extends Component {
                    }
                  }
                }
+  
+const mapStateToProps = state => ({
+  results: state.entities.search
+});
+
+const mapDispatchToProps = dispatch => ({
+  searchSpots: (lat, lon) => dispatch(searchSpots(lat, lon))
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(SearchIndex);
+

@@ -24,9 +24,11 @@ export const receiveSearchResults = (results) => ({
   results
 })
 
-// export const searchSpots = (lat, lon, location=100) => dispatch => (
-//   spotAPIUtil.locationSearch(lat, lon, location) =>
-// )
+export const searchSpots = (lat, lon, location=100) => dispatch => (
+  spotAPIUtil.locationSearch(lat, lon, location).then(spots => (
+    dispatch(receiveSearchResults(spots.data))
+  ))
+);
 
 export const updateSpot = (spotId, updatePayload) => dispatch =>
   updateCurrentSpot(spotId, updatePayload).then(spot => dispatch(receiveCurrentSpot(spot)));
@@ -43,3 +45,4 @@ const removeSpot = spotId => ({
   type: REMOVE_SPOT,
   spotId
 });
+

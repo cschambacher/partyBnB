@@ -1,12 +1,14 @@
 import React from 'react'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
 import "date-fns";
+import { searchSpots } from '../../actions/spot_actions';
 import DateFnsUtils from "@date-io/date-fns";
 import {
   MuiPickersUtilsProvider,
@@ -154,6 +156,7 @@ class SearchBox extends React.Component {
         </div>
         <button onClick={() => {
           if (this.state.address.length > 0){
+            this.props.searchSpots(this.state.lat, this.state.lng);
             this.props.history.push(`/search/${this.state.lat}/${this.state.lng}`)
           }
         }} className="search-btn">Search</button>
@@ -162,4 +165,13 @@ class SearchBox extends React.Component {
   }
 }
 
-export default withRouter(SearchBox);
+
+const mapStateToProps = state => ({
+  results: state.entities.search
+});
+
+const mapDispatchToProps = dispatch => ({
+  searchSpots: (lat, lon) => dispatch(searchSpots(lat, lon))
+});
+
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(SearchBox));
