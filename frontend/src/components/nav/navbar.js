@@ -4,11 +4,11 @@ import logoname from './logoname.png';
 import './navbar.scss';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faMapMarkerAlt } from "@fortawesome/free-solid-svg-icons";
+import { withRouter } from "react-router-dom";
 import PlacesAutocomplete, {
   geocodeByAddress,
   getLatLng
 } from "react-places-autocomplete";
-import { withRouter } from 'react-router-dom';
 
 class NavBar extends React.Component {
   constructor(props) {
@@ -72,6 +72,7 @@ class NavBar extends React.Component {
       .then(latLng => {
         console.log("Success", latLng);
         this.setState({ lat: latLng.lat, lng: latLng.lng });
+        this.props.searchSpots(this.state.lat, this.state.lng);
         this.props.history.push(`/search/${this.state.lat}/${this.state.lng}`);
       })
       .catch(error => console.error("Error", error));
@@ -152,3 +153,4 @@ class NavBar extends React.Component {
 }
 
 export default withRouter(NavBar);
+
