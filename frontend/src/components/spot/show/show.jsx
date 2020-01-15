@@ -81,6 +81,20 @@ class Show extends Component {
             showReview: true
         });
     }
+    removeBtn(user, spot) {
+      console.log("is it currUser?", spot.user === user.id);
+      if (spot.user._id === user.id) {
+        return <li><button className="spot-list-btn-pin"
+          onClick={() => deleteSpot(this.props.match.params.spotId)
+            .then(spot => {
+              console.log("spot deleted");
+              this.props.history.push(`/dashboard`);
+            }).catch(err => console.log(err))}>Remove</button></li>
+      } else {
+        return <li></li>
+      }
+    }
+
 
     render() {
         if (!this.state.spot) return null;
@@ -110,22 +124,15 @@ class Show extends Component {
                 </li>
                 <li>The Host</li>
                 <li>Edit</li>
-                <li>
-                  <button
-                    className="spot-list-btn-pin"
-                    onClick={() =>
-                      deleteSpot(this.props.match.params.spotId)
-                        .then(spot => {
-                          console.log("spot deleted");
-                          this.props.history.push(`/dashboard`);
-                        })
-                        .catch(err => console.log(err))
-                    }
-                  >
-                    Remove
-                  </button>
-                </li>
+                {this.removeBtn(currUser, this.state.spot)}
+                {/* <li><button className="spot-list-btn-pin" 
+                    onClick={() => deleteSpot(this.props.match.params.spotId)
+                    .then(spot => {
+                    console.log("spot deleted");
+                    this.props.history.push(`/dashboard`);
+                }).catch(err => console.log(err))}>Remove</button></li> */}
                 {/* <li>{this.removeBtn(currUser, this.state.spot)}</li> */}
+
               </ul>
             </div>
             <div className="show-detail">
