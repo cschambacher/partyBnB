@@ -13,11 +13,22 @@ router.get("/", (req, res) => {
     .catch(err => res.status(404).json({ nospotsfound: "No spots found" }));
 });
 router.get("/all", (req, res) => {
-  Spot.find()
-    .populate('user', 'email')
-    .sort({ created_at: -1 })
-    .then(spots => res.json(spots))
-    .catch(err => res.status(404).json({ nospotsfound: "No spots found" }));
+  if (req.query.userId){
+    const userId = req.query.userId;
+    Spot.find()
+      .where("user", userId)
+      .populate('user', 'email')
+      .sort({ created_at: -1 })
+      .then(spots => res.json(spots))
+      .catch(err => res.status(404).json({ nospotsfound: "No spots found" }));
+  } else {
+    Spot.find()
+      .populate('user', 'email')
+      .sort({ created_at: -1 })
+      .then(spots => res.json(spots))
+      .catch(err => res.status(404).json({ nospotsfound: "No spots found" }));
+  }
+  
 });
 
 router.get("/:id", (req, res) => {
@@ -35,8 +46,6 @@ router.post("/", passport.authenticate("jwt", { session: false }), (req, res) =>
 //    if (!isValid) {
 //      return res.status(400).json(errors);
 //    }
-console.log("Type of", typeof req.body);
-console.log(req.body);
   const newSpot = Object.values(req.body) > 0 ? new Spot(req.body) : new Spot({
       user: req.user.id //req.user is accessed through passport
     });
@@ -50,7 +59,6 @@ console.log(req.body);
 );
 
 router.patch("/:id", passport.authenticate('jwt', {session: false}), (req, res) => {
-  console.log(req.body);
   Spot.findById(req.params.id , (err, spot) => {
     if (err) console.log(err);
     if (spot.user.toString() === req.user.id){

@@ -24,16 +24,14 @@ export default class Profile extends React.Component {
 
     componentDidMount() {
         this.props.fetchCurrentUser().then(action => {
-            console.log("user", action.currentUser);
             this.setState({ user: action.currentUser.data });
-        });
-        fetchAllSpots().then(spots => {
-            console.log("spots", spots);
-            const user = this.state.user;
-            const spotsdata = spots.data;
-            const userSpots = Object.values(spotsdata).filter(spot => spot.user._id === user.id )
-            this.setState({ spots: userSpots });
-        });
+        }).then(() => {
+        fetchAllSpots(this.state.user.id).then(spots => {
+            // const user = this.state.user;
+            // const spotsdata = spots.data;
+            // const userSpots = Object.values(spotsdata).filter(spot => spot.user._id === user.id )
+            this.setState({ spots: spots.data });
+        });})
     }
     location(spots){
         if (spots.length === 0){
@@ -44,12 +42,13 @@ export default class Profile extends React.Component {
                     spots.map(spot => (
                         <Thumbnail
                             title={spot.title}
-                            description={spot.description.description}
-                            price={spot.price.basePrice.toString()}
+                            description={spot.description ? spot.description.description : ""}
+                            price={spot.price ? spot.price.basePrice.toString() : ""}
                             key={spot.id}
-                            imageUrl={spot.imageUrl}
+                            imageUrl={spot.imageUrl ? spot.imageUrl : ""}
                             id={spot._id}
-                            state={spot.location.state}
+                            state={spot.location ? spot.location.state : ""}
+                            city={spot.location ? spot.location.city : ""}
                         />
                     ))
                 }
@@ -57,7 +56,7 @@ export default class Profile extends React.Component {
         }
     }
     render() {
-        console.log(this.state);
+
         
         const user = this.state.user;
         if (user === null) return null;
