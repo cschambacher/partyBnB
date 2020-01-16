@@ -2,9 +2,13 @@ import axios from 'axios';
 export const fetchSpots = () => (
     axios.get('/api/spots')
 )
-export const fetchAllSpots = () => (
-    axios.get('/api/spots/all')
-)
+export const fetchAllSpots = (userId) => {
+    if (userId) {
+        return axios.get(`/api/spots/all?userId=${userId}`)
+    } else return axios.get(`/api/spots/all/`)
+}
+    
+
 
 export const fetchSpot = (spotId) => (
     axios.get(`/api/spots/${spotId}`)
