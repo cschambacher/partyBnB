@@ -2,3 +2,20 @@
     display: flex;
     flex-wrap: wrap;
 }
+
+@font-face{
+    font-family: 'Circular';
+    src: url('./CircularStd-Black.ttf');
+}
+
+.explore-header {
+    font-family: 'Circular';
+    font-size: 1.5em;
+    color: rgb(33,33,33);
+    margin-left: 2%;
+    margin-top: 1%;
+}
+
+.dashboard-categories {
+    display: flex;
+}
