@@ -1,5 +1,8 @@
 import React from 'react';
 import { withRouter , Link} from 'react-router-dom';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEnvelopeSquare, faLock } from "@fortawesome/free-solid-svg-icons";
+import logoname from './logoname.png';
 import './session_forms.scss';
 class LoginForm extends React.Component {
     constructor(props) {
@@ -69,6 +72,11 @@ class LoginForm extends React.Component {
                             onChange={this.update('email')}
                             placeholder="Email"
                         />
+                            <FontAwesomeIcon
+                                icon={faEnvelopeSquare}
+                                color="grey"
+                                className="icon-mail"
+                            />
                         </div>
                          <div className="form-input">
                         <input type="password"
@@ -76,17 +84,22 @@ class LoginForm extends React.Component {
                             onChange={this.update('password')}
                             placeholder="Password"
                         />
+                            <FontAwesomeIcon
+                                icon={faLock}
+                                color="grey"
+                                className="icon-mail"
+                            />
                         </div>
                         <div className="form-submit">
-                        <input type="submit" value="Login" className="form-btn"/>
+                            <input type="submit" value="Login" className="form-btn sharpen2"/>
                         </div>
                         {this.renderErrors()}
-                        <div className="form-footer">
-                            <h3>Sign up with <span className="blue">Facebook</span> or <span className="blue">Google</span></h3>
+                        <div className="form-footer-login">
+                            <img src={logoname} className="nav-logo" alt="logo" />
 
                         </div>
                         <div className="form-footer">
-                            <h3 className="login-h3">Don't have an Airbnb account? <span className="blue"><Link to={'/signup'}>Signup</Link></span></h3>
+                            <h3 className="login-h3">Don't have a partyBnB account? <span className="blue"><Link to={'/signup'}>Signup</Link></span></h3>
                         </div>
                     </div>
                     
