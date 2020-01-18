@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
     }
     render() {
         const sanFranDisplay = this.state.sanFranClicked ? (this.state.sanFran.map(spot => (
-            <div className="thumb-display">
+            
                 <Thumbnail
                     title={spot.title}
                     description={spot.description.description}
@@ -41,8 +41,7 @@ class Dashboard extends React.Component {
                     state={spot.location.state}
                     city={spot.location.city}
                 />
-            </div>
-        ))) : (this.state.sanFran.slice(0, 5).map(spot => (
+        ))) : (this.state.sanFran.slice(0, 6).map(spot => (
             
                 
                     <Thumbnail
@@ -78,7 +77,7 @@ class Dashboard extends React.Component {
                         {sanFranDisplay}
                         </div>
                         {(this.state.sanFranClicked === false) ?
-                            <p className="display-all-button">Show all {`(${this.state.sanFran.length})`}</p>
+                        <p className="display-all-button" onClick={() => this.setState({ sanFranClicked: true})}>Show all {`(${this.state.sanFran.length})`}</p>
                         : <div></div> }
                     <div className="thumb-display">
                         {
