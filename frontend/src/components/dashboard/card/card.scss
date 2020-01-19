@@ -1,0 +1,42 @@
+.card {
+display: flex;
+flex-direction: column;
+box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+border: 1px solid rgba(0, 0, 0, 0.02);
+border-radius: 12px;
+margin-right: 1.5%;
+font-family: 'Circular';
+width: 31%;
+height: auto;
+}
+
+
+.card-title {
+    background-color: white;
+    padding: 10% 20% 10% 3%;
+}
+
+@media only screen and (min-width: 768px){
+    .card {
+    width: 31%;
+    box-shadow: rgba(0, 0, 0, 0.15) 0px 2px 8px;
+    border: 1px solid rgba(0, 0, 0, 0.02);
+    border-radius: 12px;
+    display: flex;
+    flex-direction: row;
+    margin-right: 1.8%;
+    font-family: 'Circular';
+}
+   .card-image {
+    width: 30%;
+    border-radius: 12px 0px 0px 12px;
+    height: 100%;
+}
+
+   .card-title {
+    background-color: white;
+    text-align: center;
+    width: 100%;
+    border-radius: 0px 12px 12px 0px;
+}
+}
