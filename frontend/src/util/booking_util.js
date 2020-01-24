@@ -6,3 +6,7 @@ export const createBooking = (booking) => (
 export const fetchBooking = bookingId => (
     axios.get(`api/booking/${bookingId}`)
 );
+
+export const fetchUsersBookings = userId => (
+    axios.get(`api/booking/user/${userId}`)
+)

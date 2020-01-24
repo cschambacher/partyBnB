@@ -13,7 +13,9 @@ import './show.scss';
 import { createBooking } from '../../../util/booking_util';
 import avatar from './avatar.png';
 import Review from "../../review/review_index_container";
-
+import BookingModal from '../../booking/booking_modal/booking_modal';
+import successImage from '../../booking/booking_modal/tick.png'
+import failureImage from '../../booking/booking_modal/stop.svg'
 class Show extends Component {
     constructor(props) {
         super(props);
@@ -22,15 +24,18 @@ class Show extends Component {
             startDate: new Date(),
             endDate: new Date(),
             maxGuestSize: 25,
-            showReview: false
+            showReview: false,
+            showSuccessModal: false,
+            showFailureIAlreadyBooked: false,
+            showFailureSomeoneAlreadyBooked: false,
+            showNotLoggedIn: false,
+            message: ""
         }
         this.reviewIndex = this.reviewIndex.bind(this)
     }
 
     componentDidMount() {
-        console.log("mount", this.props);
         fetchSpot(this.props.match.params.spotId).then(spot => {
-            console.log(spot);
             this.setState({ spot: spot.data });
         });
     }
@@ -57,19 +62,41 @@ class Show extends Component {
     }
 
     handleBooking = () => {
+      if (Object.values(this.props.currUser).length > 0){
+        let startDate = new Date(this.state.startDate.setMinutes(0));
+        startDate = new Date(startDate.setSeconds(0));
+        startDate = new Date(startDate.setMilliseconds(0));
+        let endDate = new Date(this.state.endDate.setMinutes(0));
+        endDate = new Date(endDate.setSeconds(0));
+        endDate = new Date(endDate.setMilliseconds(0));
         const booking = {
-            startDate: this.state.startDate,
-            endDate: this.state.endDate,
-            spot: this.props.match.params.spotId,
-            price: this.state.spot.price.basePrice,
-            guests: this.state.maxGuestSize
+          startDate,
+          endDate,
+          spot: this.props.match.params.spotId,
+          price: this.state.spot.price.basePrice,
+          guests: this.state.maxGuestSize
         }
         createBooking(booking).then((createdBooking) => {
-            this.props.sendBooking(createdBooking);
-            this.props.history.push(`/booking/${createdBooking.data._id}`);
-        })
+          this.props.sendBooking(createdBooking);
+          this.props.history.push(`/booking/${createdBooking.data._id}`);
+        }).catch(e => {
+          if (e.toString().includes("436")) {
+            this.setState({
+              message: "You have already booked this spot during during the same timeframe.",
+              showFailureIAlreadyBooked: true
+            });
+          } else if (e.toString().includes("435")) {
+            this.setState({
+              message: "Sorry, this spot is already booked during this time. Please try again later.",
+              showFailureSomeoneAlreadyBooked: true
+            });
+          }
+        });
         // this.props.history.push()
         console.log("handle booking");
+      } else {
+        this.setState({message: "Please login to reserve this spot", showNotLoggedIn: true})
+      }
     }
 
     // reviewIndex = () => {
@@ -81,13 +108,21 @@ class Show extends Component {
             showReview: true
         });
     }
+
+    closeModal = () => {
+      this.setState({
+        showSuccessModal: false,
+        showFailureIAlreadyBooked: false,
+        showFailureSomeoneAlreadyBooked: false,
+        showNotLoggedIn: false});
+    }
+
+
     removeBtn(user, spot) {
-      console.log("is it currUser?", spot.user === user.id);
       if (spot.user._id === user.id) {
         return <li><button className="spot-list-btn-pin"
           onClick={() => deleteSpot(this.props.match.params.spotId)
             .then(spot => {
-              console.log("spot deleted");
               this.props.history.push(`/dashboard`);
             }).catch(err => console.log(err))}>Remove</button></li>
       } else {
@@ -102,10 +137,24 @@ class Show extends Component {
         const price = this.state.spot.price.basePrice;
         const rating = this.props.rating;
         const {currUser} = this.props;
-        console.log(currUser);
-        console.log(this.state.spot);
 
         return (
+          <div>{this.state.showSuccessModal && <BookingModal
+            message={this.state.message}
+            image={successImage}
+            callback={this.closeModal} />}
+            {this.state.showFailureIAlreadyBooked && <BookingModal
+              message={this.state.message}
+              image={failureImage}
+              callback={this.closeModal} />}
+            {this.state.showNotLoggedIn && <BookingModal
+              message={this.state.message}
+              image={failureImage}
+              callback={this.closeModal} />}
+            {this.state.showFailureSomeoneAlreadyBooked && <BookingModal
+              message={this.state.message}
+              image={failureImage}
+              callback={this.closeModal} />}
           <div className="show">
             <div className="show-header-photos">
               <div className="col1">
@@ -124,7 +173,7 @@ class Show extends Component {
                 </li>
                 <li>The Host</li>
                 <li>Edit</li>
-                {this.removeBtn(currUser, this.state.spot)}
+                {currUser && this.removeBtn(currUser, this.state.spot)}
                 {/* <li><button className="spot-list-btn-pin" 
                     onClick={() => deleteSpot(this.props.match.params.spotId)
                     .then(spot => {
@@ -221,6 +270,8 @@ class Show extends Component {
                       margin="normal"
                       id="end-date-picker-inline"
                       label="End-Date"
+                      // minDate={this.st}
+                      // minDateMessage="Bookings must be at least one night"
                       value={this.state.endDate}
                       onChange={endDate => this.setState({ endDate })}
                       KeyboardButtonProps={{
@@ -257,6 +308,7 @@ class Show extends Component {
               {this.state.showReview && <Review />}
             </div>
             <div className="empty-height"></div>
+          </div>
           </div>
         );
     }
