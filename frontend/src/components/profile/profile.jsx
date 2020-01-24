@@ -5,6 +5,8 @@ import { fetchAllSpots } from '../../util/spot_util';
 import { fetchCurrentUser } from '../../actions/users_actions';
 import profilepic from './pin9.jpg';
 import Thumbnail from '../thumbnail/thumbnail'
+import { fetchUsersBookings } from '../../util/booking_util';
+import BookingList from '../booking/booking_list/booking_list';
 import './profile.scss';
 // const panes = [
 //     { title: 'pins', content: <PinIndex /> },
@@ -16,8 +18,8 @@ export default class Profile extends React.Component {
         super(props);
         this.state = {
             user: null,
-            spots: []
-
+            spots: [],
+            bookings: null
         }
 
     }
@@ -27,6 +29,7 @@ export default class Profile extends React.Component {
             this.setState({ user: action.currentUser.data });
         }).then(() => {
         fetchAllSpots(this.state.user.id).then(spots => {
+            fetchUsersBookings(this.state.user.id).then(res => this.setState({ bookings: res.data }));
             // const user = this.state.user;
             // const spotsdata = spots.data;
             // const userSpots = Object.values(spotsdata).filter(spot => spot.user._id === user.id )
@@ -56,7 +59,6 @@ export default class Profile extends React.Component {
         }
     }
     render() {
-
         
         const user = this.state.user;
         if (user === null) return null;
@@ -80,6 +82,17 @@ export default class Profile extends React.Component {
                     <h1>Party spots</h1>
 
                     {this.location(spots)}
+
+                </div>
+                <div className="empty-height">
+
+                </div>
+                <div className="profile-spots">
+                    <h1>Upcoming Bookings</h1>
+                    {this.state.bookings ? <BookingList bookings={this.state.bookings}/> :
+                    <p>You don't have any spots reserved yet!</p>}
+                </div>
+                <div className="space-height">
 
                 </div>
             </div>

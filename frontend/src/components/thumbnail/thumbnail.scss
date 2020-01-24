@@ -47,8 +47,16 @@
     font-weight: 300;
 }
 
+.space-height {
+    height: 10vh;
+}
+
 .distance {
     margin-left: 1.5em;
     color: red;
     font-family: sans-serif;
+}
+
+.check-in-time, .check-out-time {
+    font-weight: bold;
 }
