@@ -22,11 +22,11 @@ Partybnb is primarily built with the MERN stack: MongoDB, Express, React, and No
 * Users can view a list of spots
 4. Bookings(2 days)
 * Logged in users can book a spot
-5. Reviews(2 days)
+5. Spots search (by location & availability) & Google Maps on search (2 days)
+* Users can search for spots through google maps
+6. Reviews(2 days)
 * Logged in users can review a spot
 * Logged in users can review a user
-6. Spots search (by location & availability) & Google Maps on search (2 days)
-* Users can search for spots through google maps
 7. Bonus: User/host profiles(3 days)
 * Users have a public profile of their spots and bookings
 8. Bonus: Messages (3 days)
