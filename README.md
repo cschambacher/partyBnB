@@ -1,6 +1,7 @@
 # partyBnB
 
 ## 1.Live Site
+https://safe-gorge-04616.herokuapp.com
 
 ## 2.Background and Overview
 partyBnB, app inspired by AirBnB, is a social media application that allows users to share spots they can rent for parties. A user can book another users's party spot, in a location and leave reviews.
